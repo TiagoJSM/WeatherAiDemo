@@ -1,0 +1,13 @@
+# Ignore The following directories / file extensions
+Library
+Temp
+obj
+bin
+packages
+*.dll
+*.obj
+*.pdb
+*.suo
+
+# Ignore the following file extensions
+*.exe
