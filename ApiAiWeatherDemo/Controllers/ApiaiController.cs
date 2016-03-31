@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace ApiAiWeatherDemo.Controllers
 {
-    public class WeatherController : Controller
+    public class ApiaiController : Controller
     {
         //Change the service you want to use
-        private LuisService _aiService = new LuisService();
+        private ApiAiService _aiService = new ApiAiService();
         private ForecastService _forecastService = new ForecastService();
 
         // GET: Weather
