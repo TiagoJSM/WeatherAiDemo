@@ -11,7 +11,8 @@ namespace ApiAiWeatherDemo.Controllers
 {
     public class WeatherController : Controller
     {
-        private ApiAiService _aiService = new ApiAiService();
+        //Change the service you want to use
+        private LuisService _aiService = new LuisService();
         private ForecastService _forecastService = new ForecastService();
 
         // GET: Weather
