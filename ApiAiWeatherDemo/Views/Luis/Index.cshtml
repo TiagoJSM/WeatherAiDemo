@@ -9,7 +9,7 @@
 <h3>Hi this endpoint is using <a href="http://www.luis.ai">Luis</a> </h3>
 
 @Html.Label("Ask a question like 'What is the weather in Edinburgh?'");
-@using (Html.BeginForm("Post", "Weather", FormMethod.Post))
+@using (Html.BeginForm("Post", "luis", FormMethod.Post))
 {
     @Html.LabelFor(m => m.Question)
     @Html.TextBoxFor(m => m.Question)
