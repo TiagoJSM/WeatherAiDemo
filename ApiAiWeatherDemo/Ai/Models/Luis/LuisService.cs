@@ -10,7 +10,7 @@ namespace ApiAiWeatherDemo.Ai
 {
     public class LuisService : IAiService
     {
-        public QueryResponse Query(string query)
+        public LuisQueryResponse Query(string query)
         {
             query = HttpUtility.HtmlEncode(query);
             var client = new RestClient("https://api.projectoxford.ai/luis/v1/");
@@ -38,11 +38,7 @@ namespace ApiAiWeatherDemo.Ai
                 return null;
             }
 
-
-            return new QueryResponse()
-            {
-                CityName = res.entities[0].entity
-            };
+            return res;
         }
 
         QueryResponse IAiService.Query(string query)

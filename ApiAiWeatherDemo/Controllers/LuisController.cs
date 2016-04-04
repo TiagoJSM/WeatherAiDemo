@@ -34,9 +34,14 @@ namespace ApiAiWeatherDemo.Controllers
             var city = default(string);
             if (aiResponse != null)
             {
-                city = aiResponse.CityName;
+                city = aiResponse.entities[0].entity;
             }
             return RedirectToAction("Index", new { city = city });
+        }
+
+        public ActionResult About()
+        {
+            return View();
         }
     }
 }

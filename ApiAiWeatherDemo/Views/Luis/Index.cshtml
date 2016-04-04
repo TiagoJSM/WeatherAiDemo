@@ -5,8 +5,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>LUIS</h2>
+<h2>Luis</h2>
 <h3>Hi this endpoint is using <a href="http://www.luis.ai">Luis</a> </h3>
+<h3>Find out more the training used <a href="/Luis/training">here</a></h3>
 
 @Html.Label("Ask a question like 'What is the weather in Edinburgh?'");
 @using (Html.BeginForm("Post", "luis", FormMethod.Post))
