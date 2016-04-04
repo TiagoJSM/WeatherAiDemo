@@ -1,26 +1,44 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "About";
-}
-<h2>About</h2>
-
-<h2>Data model</h2>
-
-
-<h2>Training</h2>
-
-<h3>The Luis AI was trained with variations on the following phrases</h3>
-<div>
-   <ul>
-    <li>What is the weather like in {location} ?</li>
-    <li>I'm in {location}, what is the weather like ?</li>
-    <li>What's the weather in {location} ?</li>
-    <li>What's it like outside in {location}</li>
-   </ul>
+    }
+ <h2>About</h2>
+ 
+ <h2>Data model</h2>
+<p>
+    {
+        query: "",
+        intents: [
+                    {
+                        intent: "",
+                        score: ,
+                        actions:
+                    }
+                ],
+        entities: [
+                    {
+                        entity: "",
+                        type: "",
+                        startIndex: ,
+                        endIndex: ,
+                        score:
+                    }
+                   ]
+    }
+</p>
+ <h2>Training</h2>
+ 
+ <h3>The Luis AI was trained with variations on the following phrases</h3>
+ <div>
+    <ul>
+        <li>What is the weather like in {location} ?</li>
+        <li>I'm in {location}, what is the weather like ?</li>
+        <li>What's the weather in {location} ?</li>
+        <li>What's it like outside in {location}</li>
+    </ul>
     <p>
-        These phrases are sent into the LUIS <a href="https://www.luis.ai/ApplicationList">web client</a> with a range of different locations. 
+        These phrases are sent into the LUIS <a href="https://www.luis.ai/ApplicationList">web client</a> with a range of different locations.
         Ideally with the range being number of words in each location so it can better deal with the more unusual places.
-        Also the more variation on the base question of "What is the weather in X" the better. 
+        Also the more variation on the base question of "What is the weather in X" the better.
         One thing to note is that LUIS needs the variation in locations. If it is trained with only one, Edinburgh for example, it will struggle to correctly identify others.
     </p>
 </div>

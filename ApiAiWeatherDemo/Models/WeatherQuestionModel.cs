@@ -12,6 +12,6 @@ namespace ApiAiWeatherDemo.Models
         [DisplayName("Question")]
         public string Question { get; set; }
         public string City { get; set; }
-        public Main ForecastResult { get; set; }
+        public CityForecastModel ForecastResult { get; set; }
     }
 }

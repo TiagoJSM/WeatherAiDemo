@@ -11,8 +11,8 @@ namespace ApiAiWeatherDemo.Forecast
     {
         public CityForecastModel GetFromCity(string city)
         {
-            var client = new RestClient("http://api.openweathermap.org/");
-            var request = new RestRequest(@"data/2.5/weather?q={city}&units=metric&APPID=4e8f8dcec02080b290bcbcbfc2beaab1", Method.GET);
+            var client = new RestClient("http://api.apixu.com/v1/");
+            var request = new RestRequest(@"current.json?key=16a66ee212024cb1bef125700160404&q={city}", Method.GET);
             request.AddUrlSegment("city", city);
 
             var response = client.Execute<CityForecastModel>(request);

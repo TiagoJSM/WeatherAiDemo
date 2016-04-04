@@ -5,62 +5,49 @@ using System.Web;
 
 namespace ApiAiWeatherDemo.Forecast.Models
 {
-    public class Coord
+    public class Location
     {
-        public double Lon { get; set; }
-        public double Lat { get; set; }
+        public String name { get; set; }
+        public String region { get; set; }
+        public String country { get; set; }
+        public int lat { get; set; }
+        public int lon { get; set; }
+        public String tz_id { get; set; }
+        public long localtime_epoch { get; set; }
+        public String localtime { get; set; }
     }
 
-    public class Weather
+    public class Current
     {
-        public int Id { get; set; }
-        public string Main { get; set; }
-        public string Description { get; set; }
-        public string Icon { get; set; }
+        public String last_updated_epoch { get; set; }
+        public String last_updated { get; set; }
+        public int temp_c { get; set; }
+        public int temp_f { get; set; }
+        public Condition condition { get; set; }
+        public int wind_mph { get; set; }
+        public int wind_kph { get; set; }
+        public int wind_degree { get; set; }
+        public String wind_dir { get; set; }
+        public int pressure_md { get; set; }
+        public int pressure_in { get; set; }
+        public int precip_mm { get; set; }
+        public int precip_in { get; set; }
+        public int humidity { get; set; }
+        public int cloud { get; set; }
+        public int feelslike_c { get; set; }
+        public int feelslike_f { get; set; }
     }
 
-    public class Main
+    public class Condition
     {
-        public double Temp { get; set; }
-        public int Pressure { get; set; }
-        public int Humidity { get; set; }
-        public double TempMin { get; set; }
-        public double TempMax { get; set; }
-    }
-
-    public class Wind
-    {
-        public double Speed { get; set; }
-        public int Deg { get; set; }
-    }
-
-    public class Clouds
-    {
-        public int All { get; set; }
-    }
-
-    public class Sys
-    {
-        public int Type { get; set; }
-        public int Id { get; set; }
-        public double Message { get; set; }
-        public string Country { get; set; }
-        public int Sunrise { get; set; }
-        public int Sunset { get; set; }
+        public String text { get; set; }
+        public String icon { get; set; }
+        public int code { get; set; }
     }
 
     public class CityForecastModel
     {
-        public Coord Coord { get; set; }
-        public List<Weather> Weather { get; set; }
-        public string @Base { get; set; }
-        public Main Main { get; set; }
-        public Wind Wind { get; set; }
-        public Clouds Clouds { get; set; }
-        public int Dt { get; set; }
-        public Sys Sys { get; set; }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Cod { get; set; }
+        public Location location { get; set; }
+        public Current current { get; set; }
     }
 }

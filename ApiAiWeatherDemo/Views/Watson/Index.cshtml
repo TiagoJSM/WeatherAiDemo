@@ -19,20 +19,20 @@
 {
     <div>Forecast in @Model.City</div>
     <div>
-        @Html.Label("Max temperature: ")
-        @Model.ForecastResult.TempMax
+        @Html.Label("Current temperature: ")
+        @Model.ForecastResult.current.temp_c
     </div>
     <div>
-        @Html.Label("Min temperature: ")
-        @Model.ForecastResult.TempMin
+        @Html.Label("Feels like temperature: ")
+        @Model.ForecastResult.current.feelslike_c
     </div>
     <div>
         @Html.Label("Humidity: ")
-        @Model.ForecastResult.Humidity
+        @Model.ForecastResult.current.humidity
     </div>
     <div>
         @Html.Label("Pressure: ")
-        @Model.ForecastResult.Pressure
+        @Model.ForecastResult.current.pressure_in
     </div>
 }
 
