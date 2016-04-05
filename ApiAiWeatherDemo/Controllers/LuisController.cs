@@ -1,4 +1,5 @@
 ﻿using ApiAiWeatherDemo.Ai;
+using ApiAiWeatherDemo.Ai.Models.Luis;
 using ApiAiWeatherDemo.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
@@ -25,6 +26,11 @@ namespace ApiAiWeatherDemo.Controllers
                 model.City = city;
                 model.ForecastResult = forecastResponse;
             }
+            if (TempData["aiResponse"] != null)
+            {
+
+                model.LuisResponse = (LuisQueryResponse)TempData["aiResponse"];
+            }
             return View(model);
         }
 
@@ -36,6 +42,7 @@ namespace ApiAiWeatherDemo.Controllers
             {
                 city = aiResponse.entities[0].entity;
             }
+            TempData["aiResponse"] = aiResponse;
             return RedirectToAction("Index", new { city = city });
         }
 

@@ -15,26 +15,66 @@
     @Html.LabelFor(m => m.Question)
     @Html.TextBoxFor(m => m.Question)
 }
+<div class="row">
+    @if (Model.LuisResponse != null)
+    {
+        <div class="col-md-4">
+            <div>AI Response: Intents</div>
+                @foreach (var intent in @Model.LuisResponse.intents)
+                {
+                <div>
+                    @Html.Label("Intent name: ")
+                    @intent.intent
+                </div>
+                <div>
+                    @Html.Label("Confidence rating: ")
+                    @intent.score
+                </div>
+                }
+        </div>
+                
+    <div class="col-md-4">
+        <div>AI Response: Entities</div>
+        @foreach (var entity in Model.LuisResponse.entities)
+        {
+            <div>
+                @Html.Label("Intent entity: ")
+                @entity.entity
+            </div>
+            <div>
+                @Html.Label("Entity type: ")
+                @entity.type
+            </div>
+            <div>
+                @Html.Label("Entity score: ")
+                @entity.score
+            </div>
+        }
+     </div>
+        
+    }
 
-@if (@Model.ForecastResult != null)
-{
-    <div>Forecast in @Model.City</div>
-    <div>
-        @Html.Label("Current temperature: ")
-        @Model.ForecastResult.current.temp_c
-    </div>
-    <div>
-        @Html.Label("Feels like temperature: ")
-        @Model.ForecastResult.current.feelslike_c
-    </div>
-    <div>
-        @Html.Label("Humidity: ")
-        @Model.ForecastResult.current.humidity
-    </div>
-    <div>
-        @Html.Label("Pressure: ")
-        @Model.ForecastResult.current.pressure_in
-    </div>
-}
-
+        @if (@Model.ForecastResult != null)
+        {
+            <div class="col-md-4">
+                <div>Forecast in @Model.City</div>
+                <div>
+                    @Html.Label("Current temperature: ")
+                    @Model.ForecastResult.current.temp_c
+                </div>
+                <div>
+                    @Html.Label("Feels like temperature: ")
+                    @Model.ForecastResult.current.feelslike_c
+                </div>
+                <div>
+                    @Html.Label("Humidity: ")
+                    @Model.ForecastResult.current.humidity
+                </div>
+                <div>
+                    @Html.Label("Pressure: ")
+                    @Model.ForecastResult.current.pressure_in
+                </div>
+            </div>
+        }
+</div>
 
