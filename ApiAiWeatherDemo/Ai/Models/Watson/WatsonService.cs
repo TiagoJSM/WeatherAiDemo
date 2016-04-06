@@ -11,7 +11,7 @@ namespace ApiAiWeatherDemo.Ai.Models.Watson
     public class WatsonService : IAiService
     {
         //public QueryResponse Query(WatsonQueryRequest userRequest)
-        public QueryResponse Query(string query)
+        public WatsonQueryResponse Query(string query)
         {
             var client = new RestClient("https://gateway.watsonplatform.net")
             {
@@ -25,29 +25,33 @@ namespace ApiAiWeatherDemo.Ai.Models.Watson
                 return null;
             }
 
+            
+
             request.AddParameter("client_id", response.Data.ClientId);
             request.AddParameter("conversation_id", response.Data.ConversationId);
             request.AddParameter("input", query);
 
             response = client.Execute<WatsonQueryResponse>(request);
-            var content = response.Data;
+            WatsonQueryResponse res = response.Data;
             
             if (response.StatusCode != HttpStatusCode.Created)
             {
                 return null;
             }
 
-            if (content.Confidence < 0.9)
+            if (res.Confidence < 0.9)
             {
                 return null;
             }
 
-            var city = content.Response.First();
+            var city = res.Response.First();
 
-            return new QueryResponse()
-            {
-                CityName = city
-            };
+            return res;
+        }
+
+        QueryResponse IAiService.Query(string query)
+        {
+            throw new NotImplementedException();
         }
     }
 }

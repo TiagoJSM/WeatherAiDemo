@@ -10,7 +10,7 @@ namespace ApiAiWeatherDemo.Ai
 {
     public class ApiAiService : IAiService
     {
-        public QueryResponse Query(string query)
+        public QueryApiResponse Query(string query)
         {
             var client = new RestClient("https://api.api.ai/v1/");
             var request = new RestRequest(@"query?v=20150910&query={query}&lang=en&sessionId=1234567890", Method.GET);
@@ -20,22 +20,27 @@ namespace ApiAiWeatherDemo.Ai
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
 
             var response = client.Execute<QueryApiResponse>(request);
-            var content = response.Data;
-            
-            if (content.Status.Code != 200)
+            QueryApiResponse res = response.Data;
+            if (res.Status.Code != 200)
             {
                 return null;
             }
 
-            var city = content.Result.Parameters.GeoCity;
-            if(city == null || content.Result.Action != "getWeather")
+            if(res.Result.Score < 0.75)
             {
                 return null;
             }
-            return new QueryResponse()
+
+            if(res.Result.Parameters.GeoCity == null || res.Result.Action != "getWeather")
             {
-                CityName = city
-            };
+                return null;
+            }
+            return res;
+        }
+
+        QueryResponse IAiService.Query(string query)
+        {
+            throw new NotImplementedException();
         }
     }
 }

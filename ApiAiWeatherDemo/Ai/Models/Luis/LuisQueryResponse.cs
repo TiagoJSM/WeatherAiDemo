@@ -18,13 +18,13 @@ namespace ApiAiWeatherDemo.Ai.Models.Luis
         public String type { get; set; }
         public int startIndex { get; set; }
         public int endIndex { get; set; }
-        public long score { get; set; }
+        public float score { get; set; }
     }
 
     public class Intent
     {
         public String intent { get; set; }
-        public long score { get; set; }
+        public float score { get; set; }
         public String action { get; set; }
     }
 }

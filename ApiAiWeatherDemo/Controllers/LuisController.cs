@@ -28,7 +28,6 @@ namespace ApiAiWeatherDemo.Controllers
             }
             if (TempData["aiResponse"] != null)
             {
-
                 model.LuisResponse = (LuisQueryResponse)TempData["aiResponse"];
             }
             return View(model);

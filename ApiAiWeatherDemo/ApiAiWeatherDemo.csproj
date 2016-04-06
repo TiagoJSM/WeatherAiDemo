@@ -208,6 +208,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\weather-ai-demo %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\weather-ai-demo.pubxml" />
     <None Include="Properties\PublishProfiles\WeatherQuestionApp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

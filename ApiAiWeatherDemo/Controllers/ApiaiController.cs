@@ -1,4 +1,5 @@
 ﻿using ApiAiWeatherDemo.Ai;
+using ApiAiWeatherDemo.Ai.Models.ApiAi;
 using ApiAiWeatherDemo.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
@@ -25,6 +26,11 @@ namespace ApiAiWeatherDemo.Controllers
                 model.City = city;
                 model.ForecastResult = forecastResponse;
             }
+            if (TempData["aiResponse"] != null)
+            {
+                model.ApiAIResponse = (QueryApiResponse)TempData["aiResponse"];
+            }
+
             return View(model);
         }
 
@@ -34,7 +40,8 @@ namespace ApiAiWeatherDemo.Controllers
             var city = default(string);
             if(aiResponse != null)
             {
-                city = aiResponse.CityName;
+                city = aiResponse.Result.Parameters.GeoCity;
+                TempData["aiResponse"] = aiResponse;
             }
             return RedirectToAction("Index", new { city = city });
         }

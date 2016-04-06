@@ -25,6 +25,10 @@ namespace ApiAiWeatherDemo.Controllers
                 model.City = city;
                 model.ForecastResult = forecastResponse;
             }
+            if (TempData["aiResponse"] != null)
+            {
+                model.WatsonResponse = (WatsonQueryResponse)TempData["aiResponse"];
+            }
             return View(model);
         }
 
@@ -34,7 +38,8 @@ namespace ApiAiWeatherDemo.Controllers
             var city = default(string);
             if (aiResponse != null)
             {
-                city = aiResponse.CityName;
+                city = aiResponse.Response.First();
+                TempData["aiResponse"] = aiResponse;
             }
             return RedirectToAction("Index", new { city = city });
         }
