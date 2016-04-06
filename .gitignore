@@ -11,3 +11,5 @@ packages
 
 # Ignore the following file extensions
 *.exe
+/ApiAiWeatherDemo/bower_components
+/ApiAiWeatherDemo/node_modules

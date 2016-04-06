@@ -200,15 +200,22 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Client\app.js" />
+    <Content Include="Client\controllers\index\index.html" />
+    <Content Include="Client\menubar.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="gruntfile.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\weather-ai-demo %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\weather-ai-demo %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\weather-ai-demo.pubxml" />
     <None Include="Properties\PublishProfiles\WeatherQuestionApp.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -263,6 +270,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Client\build\" />
+    <Folder Include="Client\directives\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
