@@ -106,6 +106,15 @@ if EXIST "%DEPLOYMENT_TARGET%\bower.json" (
     popd
 )
 
+:: 6. Grunt uglify
+echo Grunt uglify
+if EXIST "%DEPLOYMENT_TARGET%\gruntfile.js" (
+    pushd "%DEPLOYMENT_TARGET%"
+    call :ExecuteCmd grunt uglify
+    IF !ERRORLEVEL! NEQ 0 goto error
+    popd
+)
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
 

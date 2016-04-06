@@ -33,7 +33,7 @@ namespace ApiAiWeatherDemo
                         "~/bower_components/angular-ui-router/release/angular-ui-router.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                        "~/Client/app.js"));
+                        "~/Client/build/app.js"));
         }
     }
 }

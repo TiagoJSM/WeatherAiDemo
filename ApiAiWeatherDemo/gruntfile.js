@@ -13,8 +13,7 @@ module.exports = function (grunt) {
             options: {
                 sourceMap: true,
                 sourceMapIncludeSources: true,
-                mangle: false,
-                beautify: true
+                mangle: false
             },
             my_target: {
                 files: { 'Client/build/app.js': ['Client/**/*.js', '!Client/build/app.js'] }
