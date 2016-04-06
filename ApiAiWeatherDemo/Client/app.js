@@ -1,7 +1,7 @@
 ﻿(function () {
-    var app = angular.module("weatherAiDemo", ["ui.router"]);
+    var app = angular.module("weatherAiDemo", ["ngRoute", "ui.router"]);
 
-    app.config(function ($stateProvider, $urlRouterProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state("menubar", {
                 url: "",
@@ -21,7 +21,7 @@
             });*/
         $urlRouterProvider
             .otherwise("/index");
-    });
+    }]);
 
     app.run(['$rootScope', '$state', function ($rootScope, $state) {
 
