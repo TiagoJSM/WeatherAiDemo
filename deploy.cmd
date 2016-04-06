@@ -88,6 +88,24 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
+:: 4. NPM Install
+echo NPM Install
+if EXIST "%DEPLOYMENT_TARGET%\package.json" (
+    pushd "%DEPLOYMENT_TARGET%"
+    call :ExecuteCmd npm install
+    IF !ERRORLEVEL! NEQ 0 goto error
+    popd
+)
+
+:: 5. Bower Install
+echo Bower Install
+if EXIST "%DEPLOYMENT_TARGET%\bower.json" (
+    pushd "%DEPLOYMENT_TARGET%"
+    call :ExecuteCmd bower install
+    IF !ERRORLEVEL! NEQ 0 goto error
+    popd
+)
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
 
