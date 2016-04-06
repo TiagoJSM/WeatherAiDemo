@@ -29,6 +29,7 @@ namespace ApiAiWeatherDemo
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/bower_components/angular/angular.min.js",
+                        "~/bower_components/angular-route/angular-route.min.js",
                         "~/bower_components/angular-ui-router/release/angular-ui-router.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
