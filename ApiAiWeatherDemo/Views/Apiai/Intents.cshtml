@@ -1,0 +1,44 @@
+﻿@using ApiAiWeatherDemo.Ai.Models.ApiAi
+@model List<ApiAIIntentResponse>
+
+@{
+    ViewBag.Title = "Intents";
+}
+
+<h2>Intents</h2>
+<p>Here are a list of intents we are using with API AI</p>
+
+@if (Model != null)
+{
+    foreach (ApiAIIntentResponse res in Model)
+    {
+        <div>
+            @Html.Label("ID: ")
+            @res.id
+        </div>
+        <div>
+            @Html.Label("Name: ")
+            @res.name
+        </div>
+        <div>
+            @Html.Label("Context In: ")
+            @foreach (String contextInValue in res.contextIn){
+            @contextInValue
+            }
+        </div>
+        <div>
+            @Html.Label("Context out: ")
+            @foreach (String contextOutValue in res.contextOut)
+            {
+                @contextOutValue
+            }
+        </div>
+        <div>
+            @Html.Label("Actions: ")
+            @foreach (String actionValue in res.actions)
+            {
+                @actionValue
+            }
+        </div>
+    }
+}

@@ -45,5 +45,12 @@ namespace ApiAiWeatherDemo.Controllers
             }
             return RedirectToAction("Index", new { city = city });
         }
+
+        public ActionResult Intents()
+        {
+            IntentResponses aiResponse = _aiService.getIntents();
+            
+            return View(aiResponse.responses);
+        }
     }
 }
