@@ -183,6 +183,8 @@
     <Compile Include="Ai\Models\ApiAi\ApiAIIntentResponse.cs" />
     <Compile Include="Ai\Models\ApiAi\ApiAiService.cs" />
     <Compile Include="Ai\IAiService.cs" />
+    <Compile Include="Ai\Models\Luis\LuisAppInfo.cs" />
+    <Compile Include="Ai\Models\Luis\LuisIntentSample.cs" />
     <Compile Include="Ai\Models\Luis\LuisService.cs" />
     <Compile Include="Ai\Models\ApiAi\QueryApiResponse.cs" />
     <Compile Include="Ai\Models\Luis\LuisQueryResponse.cs" />
