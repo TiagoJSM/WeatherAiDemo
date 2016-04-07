@@ -21,6 +21,10 @@
                 url: "/watson",
                 templateUrl: "Client/components/watson/watsonView.html",
                 //controller: "EnterpriseSalesController"
+            })
+            .state("about", {
+                url: "/about",
+                templateUrl: "Client/components/about.html",
             });
         $urlRouterProvider
             .otherwise("/index");

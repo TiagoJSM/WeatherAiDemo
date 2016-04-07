@@ -237,6 +237,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
+    <Content Include="Client\components\About.html" />
     <None Include="Properties\PublishProfiles\weather-ai-demo %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\weather-ai-demo %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\weather-ai-demo.pubxml" />
