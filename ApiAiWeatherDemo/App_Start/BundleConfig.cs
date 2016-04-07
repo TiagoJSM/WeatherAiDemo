@@ -34,6 +34,8 @@ namespace ApiAiWeatherDemo
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                         "~/Client/build/app.js"));
+
+            bundles.Add(new StyleBundle("~/Content/chat").Include("~/Content/chat.css"));
         }
     }
 }

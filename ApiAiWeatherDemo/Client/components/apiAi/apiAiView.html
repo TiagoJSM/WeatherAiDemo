@@ -1,0 +1,21 @@
+﻿<div class="chat-container">
+    <div class="chat-box">
+        <div class="menu">
+            <a href="#" class="back"><i class="fa fa-angle-left"></i> <img src="http://i.imgur.com/G4EjwqQ.jpg" draggable="false" /></a>
+            <div class="name">Random chat</div>
+            <div class="members"><b>You</b>, Marga, Charo & Brotons</div>
+        </div>
+        <ol class="chat">
+            <li ng-repeat="speech in chat" class="{{speech.self ? 'self' : 'other'}}">
+                <div class="msg">
+                    <div class="user">{{speech.self ? 'You' : 'API AI'}}</div>
+                    <p ng-repeat="msg in speech.msgs">{{msg}}</p>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div>
+        <textarea rows="3" cols="50" ng-model="comment" /> </textarea>
+        <input type="submit" value="Send" ng-click="sendText()"/>
+    </div>
+</div>

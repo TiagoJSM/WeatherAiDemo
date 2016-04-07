@@ -1,16 +1,21 @@
-﻿<nav class="nav-equal container-fluid">
-    <div class="row">
-        <div class="col-xs-4 h">
-            <a ui-sref="top.dashboard.license-sales">LICENSE SALES</a>
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a ui-sref="index" area="" class = "navbar-brand">AI Weather Demo</a>
         </div>
-        <div class="col-xs-4 h">
-            <a ui-sref="top.dashboard.enterprise-sales">ENTERPRISE SALES</a>
-        </div>
-        <div class="col-xs-4 h">
-            <a ui-sref="top.dashboard.website">WEBSITE</a>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="index">Home</a></li>
+                <li><a href="/Home/About">About</a></li>
+                <li><a ui-sref="luis">Luis</a></li>
+                <li><a ui-sref="apiAi">Api AI</a></li>
+                <li><a ui-sref="watson">Watson</a></li>
+            </ul>
         </div>
     </div>
-</nav>
-<div">
-    <div ui-view></div>
 </div>

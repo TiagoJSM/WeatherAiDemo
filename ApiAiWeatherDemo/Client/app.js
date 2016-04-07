@@ -3,22 +3,25 @@
 
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state("menubar", {
-                url: "",
-                templateUrl: "Client/menubar.html",
-                redirectTo: 'menubar.index'
-            })
-            .state("menubar.index", {
+            .state("index", {
                 url: "/index",
-                templateUrl: "Client/controllers/index/index.html",
-                //redirectTo: 'top.dashboard.enterprise-sales',
-                //controller: 'DashboardController'
+                templateUrl: "Client/components/index/indexView.html"
+            })
+            .state("apiAi", {
+                url: "/apiai",
+                templateUrl: "Client/components/apiAi/apiAiView.html",
+                controller: "ApiAiController"
+            })
+            .state("luis", {
+                url: "/luis",
+                templateUrl: "Client/components/luis/luisView.html",
+                //controller: "EnterpriseSalesController"
+            })
+            .state("watson", {
+                url: "/watson",
+                templateUrl: "Client/components/watson/watsonView.html",
+                //controller: "EnterpriseSalesController"
             });
-            /*.state("top.dashboard.enterprise-sales", {
-                url: "/enterprise-sales",
-                templateUrl: "Scripts/app/components/dashboard/enterpriseSales/enterpriseSales.html",
-                controller: "EnterpriseSalesController"
-            });*/
         $urlRouterProvider
             .otherwise("/index");
     }]);
