@@ -5,6 +5,10 @@
     <p>To see what phrases were used to train in please check the Intent infomation <a ui-sref="apiaiIntentInfo">page</a></p>
 </div>
 <div class="chat-container">
+    <div>
+        <textarea rows="3" cols="50" ng-model="comment" /> </textarea>
+        <input type="submit" value="Send" ng-click="sendText()" />
+    </div>
     <div class="chat-box">
         <div class="menu">
             <a href="#" class="back"><i class="fa fa-angle-left"></i> <img src="http://i.imgur.com/G4EjwqQ.jpg" draggable="false" /></a>
@@ -19,9 +23,5 @@
                 </div>
             </li>
         </ol>
-    </div>
-    <div>
-        <textarea rows="3" cols="50" ng-model="comment" /> </textarea>
-        <input type="submit" value="Send" ng-click="sendText()"/>
     </div>
 </div>
