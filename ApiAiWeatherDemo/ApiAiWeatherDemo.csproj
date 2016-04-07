@@ -167,6 +167,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ai\Models\ApiAi\ApiAIIntentObject.cs" />
     <Compile Include="Ai\Models\ApiAi\ApiAIIntentResponse.cs" />
     <Compile Include="Ai\Models\ApiAi\ApiAiService.cs" />
     <Compile Include="Ai\IAiService.cs" />

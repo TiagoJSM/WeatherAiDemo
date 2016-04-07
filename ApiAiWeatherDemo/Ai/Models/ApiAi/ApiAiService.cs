@@ -43,7 +43,7 @@ namespace ApiAiWeatherDemo.Ai
             throw new NotImplementedException();
         }
 
-        public IntentResponses getIntents()
+        public ApiAIIntentObject getIntents()
         {
             var client = new RestClient("https://api.api.ai/v1/");
             var request = new RestRequest(@"intents?v=20150910", Method.GET);
@@ -52,8 +52,19 @@ namespace ApiAiWeatherDemo.Ai
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
 
             var response = client.Execute<IntentResponses>(request);
-            IntentResponses result = new IntentResponses();
-            result.responses = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ApiAIIntentResponse>>(response.Content);
+            IntentResponses intentsResponse = new IntentResponses();
+            intentsResponse.responses = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ApiAIIntentResponse>>(response.Content);
+
+            var requestSingleIntent = new RestRequest(@"intents/{id}?v=20150910", Method.GET);
+            requestSingleIntent.AddUrlSegment("id", intentsResponse.responses.First().id);
+
+            requestSingleIntent.AddHeader("Authorization", "Bearer 589e7b5ab7ce471db071a1d286e57a85");
+            requestSingleIntent.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
+
+            var singleIntentResponse = client.Execute<ApiAIIntentObject>(requestSingleIntent);
+
+            ApiAIIntentObject result = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiAIIntentObject>(singleIntentResponse.Content);
+
             return result;
         }
     }

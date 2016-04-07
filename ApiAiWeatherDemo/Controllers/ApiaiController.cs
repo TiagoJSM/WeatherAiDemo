@@ -48,9 +48,9 @@ namespace ApiAiWeatherDemo.Controllers
 
         public ActionResult Intents()
         {
-            IntentResponses aiResponse = _aiService.getIntents();
+            ApiAIIntentObject aiResponse = _aiService.getIntents();
             
-            return View(aiResponse.responses);
+            return View(aiResponse);
         }
     }
 }

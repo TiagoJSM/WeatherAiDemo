@@ -1,5 +1,5 @@
 ﻿@using ApiAiWeatherDemo.Ai.Models.ApiAi
-@model List<ApiAIIntentResponse>
+@model ApiAIIntentObject
 
 @{
     ViewBag.Title = "Intents";
@@ -10,35 +10,44 @@
 
 @if (Model != null)
 {
-    foreach (ApiAIIntentResponse res in Model)
-    {
         <div>
             @Html.Label("ID: ")
-            @res.id
+            @Model.id
         </div>
         <div>
             @Html.Label("Name: ")
-            @res.name
+            @Model.name
         </div>
         <div>
-            @Html.Label("Context In: ")
-            @foreach (String contextInValue in res.contextIn){
-            @contextInValue
-            }
-        </div>
-        <div>
-            @Html.Label("Context out: ")
-            @foreach (String contextOutValue in res.contextOut)
+            @if (Model.responses.Count != 0)
             {
-                @contextOutValue
+                @Html.Label("Responses: ")
+                foreach (Response res in Model.responses)
+                {
+                    <p>Action Name: @res.action </p>
+                }
             }
         </div>
         <div>
-            @Html.Label("Actions: ")
-            @foreach (String actionValue in res.actions)
+            @if (Model.contexts.Count != 0)
             {
-                @actionValue
+                @Html.Label("Contexts: ")
+                foreach (String contextValue in Model.contexts)
+                {
+                    @contextValue
+                }
             }
         </div>
-    }
+        <div>
+            @Html.Label("Templates: ")
+            <p>These phrases are used to train the intent</p>
+            <ul>
+                @foreach (String template in Model.templates)
+                {
+                    <li>@template</li>
+                }
+            </ul>
+        </div>
+        <div>
+        </div>
 }
