@@ -45,5 +45,39 @@ namespace ApiAiWeatherDemo.Ai
         {
             throw new NotImplementedException();
         }
+
+        public List<LuisIntentSample> getIntentSamples()
+        {
+            var client = new RestClient("https://api.projectoxford.ai/luis/v1.0/");
+            var request = new RestRequest(@"prog/apps/{app-id}/intents/{intent-id}/sample?maxQueriesCount={query-count}", Method.GET);
+            request.AddUrlSegment("app-id", "858a25c8-f21f-47fd-8b1f-80b3a051b1d5");
+            request.AddUrlSegment("intent-id", "41ba150c-db61-4ae4-84c5-bc260b3655d2");
+            request.AddUrlSegment("query-count", "50");
+
+            request.AddHeader("ocp-apim-subscription-key", "97c75fab726c47f685fb964878f5fac4");
+
+            var response = client.Execute<List<LuisIntentSample>>(request);
+            var content = response.Content;
+            List<LuisIntentSample> result = new List<LuisIntentSample>();
+
+            result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<LuisIntentSample>>(content);
+            return result;
+        }
+
+        public LuisAppInfo getAppInfo()
+        {
+            var client = new RestClient("https://api.projectoxford.ai/luis/v1.0/");
+            var request = new RestRequest(@"prog/apps/{app-id}", Method.GET);
+            request.AddUrlSegment("app-id", "858a25c8-f21f-47fd-8b1f-80b3a051b1d5");
+
+
+            request.AddHeader("ocp-apim-subscription-key", "97c75fab726c47f685fb964878f5fac4");
+
+            var response = client.Execute<LuisAppInfo>(request);
+            var content = response.Content;
+           
+            var result = Newtonsoft.Json.JsonConvert.DeserializeObject<LuisAppInfo>(content);
+            return result;
+        }
     }
 }

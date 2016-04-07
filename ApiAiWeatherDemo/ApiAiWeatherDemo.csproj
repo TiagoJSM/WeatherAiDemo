@@ -179,6 +179,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ai\Models\ApiAi\ApiAIIntentObject.cs" />
+    <Compile Include="Ai\Models\ApiAi\ApiAIIntentResponse.cs" />
     <Compile Include="Ai\Models\ApiAi\ApiAiService.cs" />
     <Compile Include="Ai\IAiService.cs" />
     <Compile Include="Ai\Models\Luis\LuisService.cs" />
@@ -286,6 +288,7 @@
     <Content Include="Views\Apiai\Index.cshtml" />
     <Content Include="Views\Luis\Index.cshtml" />
     <Content Include="Views\Watson\Index.cshtml" />
+    <Content Include="Views\Apiai\Intents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
