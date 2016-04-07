@@ -1,4 +1,5 @@
 ﻿using ApiAiWeatherDemo.Ai;
+using ApiAiWeatherDemo.Ai.Models.ApiAi;
 using ApiAiWeatherDemo.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
@@ -35,6 +36,20 @@ namespace ApiAiWeatherDemo.Controllers
                 return NotFound();
             }
             return Ok(model);
+        }
+
+        [Route("intents")]
+        [HttpGet]
+        public IHttpActionResult Intents()
+        {
+            ApiAIIntentObject aiResponse = _aiService.getIntents();
+
+            if (aiResponse == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(aiResponse);
         }
     }
 }

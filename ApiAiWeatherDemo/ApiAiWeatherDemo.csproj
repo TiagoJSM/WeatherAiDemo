@@ -220,7 +220,9 @@
   <ItemGroup>
     <Content Include="Client\app.js" />
     <Content Include="Client\components\apiAi\apiAiController.js" />
+    <Content Include="Client\components\apiAi\apiAiIntentController.js" />
     <Content Include="Client\components\apiAi\apiAiView.html" />
+    <Content Include="Client\components\apiAi\intentInfoView.html" />
     <Content Include="Client\components\index\indexView.html" />
     <Content Include="Client\components\luis\luisView.html" />
     <Content Include="Client\components\watson\watsonView.html" />
