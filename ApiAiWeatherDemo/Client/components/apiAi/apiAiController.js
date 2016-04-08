@@ -1,6 +1,8 @@
 ﻿var apiAiController = ["$scope", "$http", function ($scope, $http) {
     $scope.comment = "";
     $scope.chat = [];
+    $scope.aiResponseData = "";
+    $scope.aiResponse = "";
 
     $scope.sendText = function () {
         $scope.chat.unshift({
@@ -15,6 +17,7 @@
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
                 var pressure = forecast.pressure_in;
+                $scope.aiResponse = response.data.ApiAIResponse;
                 $scope.chat.unshift({
                     self: false,
                     msgs: [
@@ -44,6 +47,10 @@
                 }
             });
         $scope.comment = "";
+    }
+
+    $scope.getResponseInfo = function (element) {
+       $scope.aiResponseData = $scope.aiResponse;
     }
 }];
 

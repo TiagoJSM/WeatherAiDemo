@@ -29,6 +29,11 @@ namespace ApiAiWeatherDemo.Controllers
             }
             var city = aiResponse.Result.Parameters.GeoCity;
             var forecastResponse = _forecastService.GetFromCity(city);
+        
+            model.City = city;
+            model.ForecastResult = forecastResponse;
+            model.ApiAIResponse = aiResponse;
+            
             if(forecastResponse.current == null)
             {
                 return NotFound();
