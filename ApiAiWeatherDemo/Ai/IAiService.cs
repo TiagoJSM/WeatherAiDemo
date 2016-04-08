@@ -9,6 +9,6 @@ namespace ApiAiWeatherDemo.Ai
 {
     public interface IAiService
     {
-        QueryResponse Query(string query);
+        QueryResponse Query(string query, string sessionId);
     }
 }

@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using ApiAiWeatherDemo.Extensions;
 
 namespace ApiAiWeatherDemo.Controllers
 {
@@ -22,7 +24,8 @@ namespace ApiAiWeatherDemo.Controllers
         [HttpPost]
         public IHttpActionResult Post(WeatherQuestionModel model)
         {
-            var aiResponse = _aiService.Query(model.Question);
+            var settings = GetUserSettings();
+            var aiResponse = _aiService.Query(model.Question, settings.ApiAiSessionId);
             if (aiResponse == null)
             {
                 return BadRequest();
@@ -56,6 +59,21 @@ namespace ApiAiWeatherDemo.Controllers
             }
 
             return Ok(aiResponse);
+        }
+
+        private UserSettings GetUserSettings()
+        {
+            var settings = HttpContext.Current.Session.GetUserSettings();
+            if(settings == null)
+            {
+                settings = new UserSettings();
+            }
+            if (settings.ApiAiSessionId == null)
+            {
+                settings.ApiAiSessionId = Guid.NewGuid().ToString().Substring(0, 36);   //36 is defined by API.AI
+                HttpContext.Current.Session.SaveUserSettings(settings);
+            }
+            return settings;
         }
     }
 }

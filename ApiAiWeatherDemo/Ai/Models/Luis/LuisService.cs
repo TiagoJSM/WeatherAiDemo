@@ -41,7 +41,7 @@ namespace ApiAiWeatherDemo.Ai
             return res;
         }
 
-        QueryResponse IAiService.Query(string query)
+        QueryResponse IAiService.Query(string query, string sessionId)
         {
             throw new NotImplementedException();
         }

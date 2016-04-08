@@ -11,7 +11,7 @@ namespace ApiAiWeatherDemo.Ai.Models.Watson
     public class WatsonService : IAiService
     {
         //public QueryResponse Query(WatsonQueryRequest userRequest)
-        public WatsonQueryResponse Query(string query)
+        public WatsonQueryResponse Query(string query, string sessionId)
         {
             var client = new RestClient("https://gateway.watsonplatform.net")
             {
@@ -49,7 +49,7 @@ namespace ApiAiWeatherDemo.Ai.Models.Watson
             return res;
         }
 
-        QueryResponse IAiService.Query(string query)
+        QueryResponse IAiService.Query(string query, string sessionId)
         {
             throw new NotImplementedException();
         }

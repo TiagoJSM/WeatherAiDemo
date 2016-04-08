@@ -10,11 +10,12 @@ namespace ApiAiWeatherDemo.Ai
 {
     public class ApiAiService : IAiService
     {
-        public QueryApiResponse Query(string query)
+        public QueryApiResponse Query(string query, string sessionId)
         {
             var client = new RestClient("https://api.api.ai/v1/");
-            var request = new RestRequest(@"query?v=20150910&query={query}&lang=en&sessionId=1234567890", Method.GET);
+            var request = new RestRequest(@"query?v=20150910&query={query}&lang=en&sessionId={sessionId}", Method.GET);
             request.AddUrlSegment("query", query);
+            request.AddUrlSegment("sessionId", sessionId);
 
             request.AddHeader("Authorization", "Bearer 589e7b5ab7ce471db071a1d286e57a85");
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
@@ -38,7 +39,7 @@ namespace ApiAiWeatherDemo.Ai
             return res;
         }
 
-        QueryResponse IAiService.Query(string query)
+        QueryResponse IAiService.Query(string query, string sessionId)
         {
             throw new NotImplementedException();
         }

@@ -34,7 +34,7 @@ namespace ApiAiWeatherDemo.Controllers
 
         public ActionResult Post(WeatherQuestionModel model)
         {
-            var aiResponse = _aiService.Query(model.Question);
+            var aiResponse = _aiService.Query(model.Question, null);
             var city = default(string);
             if (aiResponse != null)
             {
