@@ -12,6 +12,11 @@
                 templateUrl: "Client/components/apiAi/apiAiView.html",
                 controller: "ApiAiController"
             })
+              .state("apiaiIntentInfo", {
+                  url: "/apiai/intentInfo",
+                  templateUrl: "Client/components/apiAi/intentInfoView.html",
+                  controller: "ApiAiIntentController"
+              })
             .state("luis", {
                 url: "/luis",
                 templateUrl: "Client/components/luis/luisView.html",
@@ -21,6 +26,10 @@
                 url: "/watson",
                 templateUrl: "Client/components/watson/watsonView.html",
                 //controller: "EnterpriseSalesController"
+            })
+            .state("about", {
+                url: "/about",
+                templateUrl: "Client/components/about.html",
             });
         $urlRouterProvider
             .otherwise("/index");

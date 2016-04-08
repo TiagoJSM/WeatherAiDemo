@@ -1,9 +1,15 @@
-﻿<h2>API AI</h2>
+﻿<div>
+    <h2>API AI</h2>
 
-<p>Hi this endpoint is using the <a href="http://www.api.ai">API AI</a> service</p>
-<label>Ask a question like 'What is the weather in Edinburgh?'</label>
-
+    <p>Hi this endpoint is using the <a href="http://www.api.ai">API AI</a> service</p>
+    <p>To see what phrases were used to train in please check the Intent infomation <a ui-sref="apiaiIntentInfo">page</a></p>
+    <label>Ask a question like 'What is the weather in Edinburgh?'</label>
+</div>
 <div class="chat-container">
+    <div>
+        <textarea rows="3" cols="50" ng-model="comment" /> </textarea>
+        <input type="submit" value="Send" ng-click="sendText()" />
+    </div>
     <div class="chat-box">
         <div class="menu">
             <a href="#" class="back"><i class="fa fa-angle-left"></i> <img src="http://i.imgur.com/G4EjwqQ.jpg" draggable="false" /></a>
@@ -18,9 +24,5 @@
                 </div>
             </li>
         </ol>
-    </div>
-    <div>
-        <textarea rows="3" cols="50" ng-model="comment" /> </textarea>
-        <input type="submit" value="Send" ng-click="sendText()"/>
     </div>
 </div>
