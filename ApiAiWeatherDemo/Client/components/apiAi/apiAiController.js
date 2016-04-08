@@ -3,7 +3,7 @@
     $scope.chat = [];
 
     $scope.sendText = function () {
-        $scope.chat.push({
+        $scope.chat.unshift({
             self: true,
             msgs: [$scope.comment]
         });
@@ -15,7 +15,7 @@
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
                 var pressure = forecast.pressure_in;
-                $scope.chat.push({
+                $scope.chat.unshift({
                     self: false,
                     msgs: [
                         "The temperature is " + temperature + "℃",
@@ -23,28 +23,26 @@
                         "Humidity is " + humidity + " and pressure is " + pressure,
                     ]
                 });
-            }).error(function errorCallback(response) {
-                if(response){
-                    $scope.chat.push({
-                        self: false,
-                        msgs: ["There was an error, I asssure you we have the best code monkeys working to sort it out"]
-                    });
-                }
-            })
-            .catch(function (err) {
-                if (err.status === 400) {
-                    $scope.chat.push({
+            }).error(function errorCallback(response, statusCode) {
+                if (statusCode === 400) {
+                    $scope.chat.unshift({
                         self: false,
                         msgs: ["I'm sorry, I didn't get that, can you ask in some other way, please"]
                     });
                 }
-                else if(err.status === 404) {
-                    $scope.chat.push({
+                else if (statusCode === 404) {
+                    $scope.chat.unshift({
                         self: false,
                         msgs: ["I'm sorry, I don't know that place, can you be more specific or ask about somewhere else"]
                     });
                 }
-            }); 
+                else {
+                    $scope.chat.unshift({
+                        self: false,
+                        msgs: ["There was an error, I asssure you we have the best code monkeys working to sort it out"]
+                    });
+                }
+            });
         $scope.comment = "";
     }
 }];

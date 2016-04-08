@@ -13,3 +13,5 @@ packages
 *.exe
 /ApiAiWeatherDemo/bower_components
 /ApiAiWeatherDemo/node_modules
+*.map
+/ApiAiWeatherDemo/Client/build/app.js
