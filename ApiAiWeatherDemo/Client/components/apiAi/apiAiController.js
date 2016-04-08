@@ -1,6 +1,10 @@
 ﻿var apiAiController = ["$scope", "$http", function ($scope, $http) {
     $scope.comment = "";
     $scope.chat = [];
+    $scope.aiResponse = "";
+    $scope.responseArea = "";
+    $scope.responseData = "";
+    $scope.response = "";
 
     $scope.sendText = function () {
         $scope.chat.push({
@@ -15,6 +19,7 @@
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
                 var pressure = forecast.pressure_in;
+                $scope.aiResponse = response.data.ApiAIResponse;
                 $scope.chat.push({
                     self: false,
                     msgs: [
@@ -28,6 +33,14 @@
                 // or server returns response with an error status.
             });
         $scope.comment = "";
+    }
+
+    $scope.getResponseInfo = function (element) {
+        var aiData = $scope.aiResponse;
+        var strigify = JSON.stringify(aiData, null, "    ");
+        if (angular.element(element).hasClass('other')) {
+            $scope.responseData = strigify;
+        }
     }
 }];
 

@@ -30,6 +30,7 @@ namespace ApiAiWeatherDemo.Controllers
                 var forecastResponse = _forecastService.GetFromCity(city);
                 model.City = city;
                 model.ForecastResult = forecastResponse;
+                model.ApiAIResponse = aiResponse;
             }
             else
             {
