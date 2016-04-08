@@ -17,7 +17,7 @@
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
                 var pressure = forecast.pressure_in;
-                $scope.aiResponse = response.data.ApiAIResponse;
+                $scope.aiResponse = response.ApiAIResponse;
                 $scope.chat.unshift({
                     self: false,
                     msgs: [
