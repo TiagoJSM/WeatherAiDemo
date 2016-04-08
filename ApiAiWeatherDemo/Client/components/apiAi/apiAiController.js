@@ -2,12 +2,12 @@
     $scope.comment = "";
     $scope.chat = [];
     $scope.aiResponseData = "";
-    $scope.aiResponse = "";
 
     $scope.sendText = function () {
         $scope.chat.unshift({
             self: true,
-            msgs: [$scope.comment]
+            msgs: [$scope.comment],
+            aiResponse: ""
         });
         
         $http.post("/api/apiai/ask", { question: $scope.comment })
@@ -17,14 +17,15 @@
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
                 var pressure = forecast.pressure_in;
-                $scope.aiResponse = response.ApiAIResponse;
+                $scope.aiResponseData = response.ApiAIResponse;
                 $scope.chat.unshift({
                     self: false,
                     msgs: [
                         "The temperature is " + temperature + "℃",
                         "But feels like " + realFeeling + "℃",
                         "Humidity is " + humidity + " and pressure is " + pressure,
-                    ]
+                    ],
+                    aiResponse: $scope.aiResponseData
                 });
             }).error(function errorCallback(response, statusCode) {
                 if (statusCode === 400) {
@@ -49,9 +50,9 @@
         $scope.comment = "";
     }
 
-    $scope.getResponseInfo = function (element) {
-       $scope.aiResponseData = $scope.aiResponse;
-    }
+    $scope.showAIResponse = function (data) {
+               $scope.aiResponseData = data;
+            }
 }];
 
 angular.module("weatherAiDemo").controller('ApiAiController', apiAiController);
