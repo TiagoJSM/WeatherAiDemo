@@ -9,8 +9,8 @@
         });
         
         $http.post("/api/apiai/ask", { question: $scope.comment })
-            .then(function successCallback(response) {
-                var forecast = response.data.ForecastResult.current;
+            .success(function successCallback(response) {
+                var forecast = response.ForecastResult.current;
                 var temperature = forecast.temp_c;
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
@@ -23,10 +23,28 @@
                         "Humidity is " + humidity + " and pressure is " + pressure,
                     ]
                 });
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            }).error(function errorCallback(response) {
+                if(response){
+                    $scope.chat.push({
+                        self: false,
+                        msgs: ["There was an error, I asssure you we have the best code monkeys working to sort it out"]
+                    });
+                }
+            })
+            .catch(function (err) {
+                if (err.status === 400) {
+                    $scope.chat.push({
+                        self: false,
+                        msgs: ["I'm sorry, I didn't get that, can you ask in some other way, please"]
+                    });
+                }
+                else if(err.status === 404) {
+                    $scope.chat.push({
+                        self: false,
+                        msgs: ["I'm sorry, I don't know that place, can you be more specific or ask about somewhere else"]
+                    });
+                }
+            }); 
         $scope.comment = "";
     }
 }];
