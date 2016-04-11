@@ -65,14 +65,6 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -206,9 +198,8 @@
     <Compile Include="Controllers\ApiAiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LuisApiController.cs" />
-    <Compile Include="Controllers\LuisController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\WatsonController.cs" />
+    <Compile Include="Controllers\WatsonApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,7 +218,9 @@
     <Content Include="Client\components\apiAi\apiAiView.html" />
     <Content Include="Client\components\apiAi\intentInfoView.html" />
     <Content Include="Client\components\index\indexView.html" />
+    <Content Include="Client\components\luis\luisAiController.js" />
     <Content Include="Client\components\luis\luisView.html" />
+    <Content Include="Client\components\watson\watsonAiController.js" />
     <Content Include="Client\components\watson\watsonView.html" />
     <Content Include="Client\menubar.html" />
     <Content Include="Content\bootstrap.css" />

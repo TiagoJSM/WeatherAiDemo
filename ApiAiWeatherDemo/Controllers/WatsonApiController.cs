@@ -10,17 +10,11 @@ using System.Web.Http;
 
 namespace ApiAiWeatherDemo.Controllers
 {
-    [RoutePrefix("api/luis")]
-    public class LuisApiController : ApiController
+    [RoutePrefix("api/watson")]
+    public class WatsonApiController : ApiController
     {
-        //Change the service you want to use
-        private LuisService _aiService;
+        private WatsonService _aiService = new WatsonService();
         private ForecastService _forecastService = new ForecastService();
-
-        public LuisApiController(LuisService aiService)
-        {
-            _aiService = aiService;
-        }
 
         [Route("ask")]
         [HttpPost]
@@ -30,11 +24,11 @@ namespace ApiAiWeatherDemo.Controllers
             var city = default(string);
             if (aiResponse != null)
             {
-                city = aiResponse.entities[0].entity;
+                city = aiResponse.Response.First();
                 var forecastResponse = _forecastService.GetFromCity(city);
                 model.City = city;
                 model.ForecastResult = forecastResponse;
-                model.LuisResponse = aiResponse;
+                model.WatsonResponse = aiResponse;
                 if (forecastResponse.current == null)
                 {
                     return NotFound();

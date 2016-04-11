@@ -20,12 +20,12 @@
             .state("luis", {
                 url: "/luis",
                 templateUrl: "Client/components/luis/luisView.html",
-                //controller: "EnterpriseSalesController"
+                controller: "LuisAiController"
             })
             .state("watson", {
                 url: "/watson",
                 templateUrl: "Client/components/watson/watsonView.html",
-                //controller: "EnterpriseSalesController"
+                controller: "WatsonAiController"
             })
             .state("about", {
                 url: "/about",
