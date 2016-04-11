@@ -14,7 +14,7 @@ using ApiAiWeatherDemo.Extensions;
 namespace ApiAiWeatherDemo.Controllers
 {
     [RoutePrefix("api/apiai")]
-    public class ApiAiApiController : ApiController
+    public class ApiAiController : ApiController
     {
         //Change the service you want to use
         private ApiAiService _aiService = new ApiAiService();
