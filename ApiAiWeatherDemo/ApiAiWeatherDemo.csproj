@@ -225,6 +225,7 @@
     <Content Include="Client\components\apiAi\apiAiView.html" />
     <Content Include="Client\components\apiAi\intentInfoView.html" />
     <Content Include="Client\components\index\indexView.html" />
+    <Content Include="Client\components\luis\luisAiController.js" />
     <Content Include="Client\components\luis\luisView.html" />
     <Content Include="Client\components\watson\watsonView.html" />
     <Content Include="Client\menubar.html" />

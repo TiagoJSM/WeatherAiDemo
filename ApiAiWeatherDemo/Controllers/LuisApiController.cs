@@ -29,6 +29,11 @@ namespace ApiAiWeatherDemo.Controllers
                 var forecastResponse = _forecastService.GetFromCity(city);
                 model.City = city;
                 model.ForecastResult = forecastResponse;
+                model.LuisResponse = aiResponse;
+                if (forecastResponse.current == null)
+                {
+                    return NotFound();
+                }
             }
             else
             {
