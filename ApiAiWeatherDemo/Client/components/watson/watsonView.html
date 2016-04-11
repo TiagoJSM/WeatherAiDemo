@@ -1,1 +1,28 @@
-﻿
+﻿<div>
+    <h2>LUIS</h2>
+
+    <p>Hi this endpoint is using the <a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson">IBM Watson</a> service</p>
+    <label>Ask a question like 'What is the weather in Edinburgh?'</label>
+</div>
+<div class="row">
+    <div class="chat-container col-md-6">
+        <div>
+            <textarea rows="3" cols="50" ng-model="comment"> </textarea>
+            <input type="submit" value="Send" ng-click="sendText()" />
+        </div>
+        <div class="chat-box">
+            <ol class="chat">
+                <li ng-repeat="speech in chat" class="{{speech.self ? 'self' : 'other'}}" ng-click="showAIResponse(speech.aiResponse)">
+                    <div class="msg">
+                        <div class="user">{{speech.self ? 'You' : 'API AI'}}</div>
+                        <p ng-repeat="msg in speech.msgs">{{msg}}</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2>AI Response</h2>
+        <pre>{{aiResponseData | json}}</pre>
+    </div>
+</div>

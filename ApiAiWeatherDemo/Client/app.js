@@ -25,7 +25,7 @@
             .state("watson", {
                 url: "/watson",
                 templateUrl: "Client/components/watson/watsonView.html",
-                //controller: "EnterpriseSalesController"
+                controller: "WatsonAiController"
             })
             .state("about", {
                 url: "/about",

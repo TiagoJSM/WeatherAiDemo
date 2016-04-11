@@ -204,6 +204,7 @@
     <Compile Include="Controllers\LuisApiController.cs" />
     <Compile Include="Controllers\LuisController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\WatsonApiController.cs" />
     <Compile Include="Controllers\WatsonController.cs" />
     <Compile Include="Forecast\ForecastService.cs" />
     <Compile Include="Forecast\Models\CityForecastModel.cs" />
@@ -227,6 +228,7 @@
     <Content Include="Client\components\index\indexView.html" />
     <Content Include="Client\components\luis\luisAiController.js" />
     <Content Include="Client\components\luis\luisView.html" />
+    <Content Include="Client\components\watson\watsonAiController.js" />
     <Content Include="Client\components\watson\watsonView.html" />
     <Content Include="Client\menubar.html" />
     <Content Include="Content\bootstrap.css" />
