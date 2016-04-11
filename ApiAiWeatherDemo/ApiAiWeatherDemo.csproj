@@ -218,6 +218,7 @@
     <Content Include="Client\components\apiAi\apiAiIntentController.js" />
     <Content Include="Client\components\apiAi\apiAiView.html" />
     <Content Include="Client\components\apiAi\intentInfoView.html" />
+    <Content Include="Client\components\baseAiServiceController.js" />
     <Content Include="Client\components\index\indexView.html" />
     <Content Include="Client\components\luis\luisAiController.js" />
     <Content Include="Client\components\luis\luisView.html" />
