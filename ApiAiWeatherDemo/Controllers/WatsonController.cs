@@ -1,5 +1,6 @@
-﻿using ApiAiWeatherDemo.Ai.Models.Watson;
-using ApiAiWeatherDemo.Forecast;
+﻿using AiServices.Models.Watson;
+using AiServices.Services.AiServices;
+using AiServices.Services.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace ApiAiWeatherDemo.Controllers
 
         public ActionResult Post(WeatherQuestionModel model)
         {
-            var aiResponse = _aiService.Query(model.Question, null);
+            var aiResponse = _aiService.Query(model.Question);
             var city = default(string);
             if (aiResponse != null)
             {

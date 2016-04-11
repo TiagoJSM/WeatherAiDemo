@@ -1,7 +1,7 @@
-﻿using ApiAiWeatherDemo.Ai.Models.ApiAi;
-using ApiAiWeatherDemo.Ai.Models.Luis;
-using ApiAiWeatherDemo.Ai.Models.Watson;
-using ApiAiWeatherDemo.Forecast.Models;
+﻿using AiServices.Models.ApiAi;
+using AiServices.Models.Luis;
+using AiServices.Models.Watson;
+using AiServices.Services.Forecast.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

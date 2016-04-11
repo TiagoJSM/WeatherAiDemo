@@ -1,7 +1,4 @@
-﻿using ApiAiWeatherDemo.Ai;
-using ApiAiWeatherDemo.Ai.Models.ApiAi;
-using ApiAiWeatherDemo.Forecast;
-using ApiAiWeatherDemo.Models;
+﻿using ApiAiWeatherDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +7,10 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using ApiAiWeatherDemo.Extensions;
-using ApiAiWeatherDemo.Forecast.Models;
+using AiServices.Services.AiServices;
+using AiServices.Models.ApiAi;
+using AiServices;
+using AiServices.Services.Forecast;
 
 namespace ApiAiWeatherDemo.Controllers
 {
@@ -18,35 +18,30 @@ namespace ApiAiWeatherDemo.Controllers
     public class ApiAiController : ApiController
     {
         //Change the service you want to use
-        private ApiAiService _aiService = new ApiAiService();
+        private ApiAiService _aiService;
+        private IApiAiWeatherService _weatherService;
         private ForecastService _forecastService = new ForecastService();
+
+        public ApiAiController(ApiAiService aiService, IApiAiWeatherService weatherService)
+        {
+            _aiService = aiService;
+            _weatherService = weatherService;
+        }
 
         [Route("ask")]
         [HttpPost]
         public IHttpActionResult Post(WeatherQuestionModel model)
         {
-            var settings = GetUserSettings();
-            var aiResponse = _aiService.Query(model.Question, settings.ApiAiSessionId);
-
-            if (aiResponse == null)
+            var weatherResponse = _weatherService.Query(model.Question);
+            if (weatherResponse == null)
             {
                 return BadRequest();
             }
-
-            var city = aiResponse.Result.Parameters.GeoCity;
-            var forecastResponse = _forecastService.GetFromCity(city);
-
-            if (forecastResponse.current == null)
+            if (weatherResponse.ForecastResult == null)
             {
                 return NotFound();
             }
-
-            model.City = forecastResponse.location.name;
-            model.ForecastResult = forecastResponse;
-            model.ApiAIResponse = aiResponse;
-            model.ForecastResult = forecastResponse;
-
-            return Ok(model);
+            return Ok(weatherResponse);
         }
 
         [Route("intents")]
@@ -63,7 +58,7 @@ namespace ApiAiWeatherDemo.Controllers
             return Ok(aiResponse);
         }
 
-        private UserSettings GetUserSettings()
+        /*private UserSettings GetUserSettings()
         {
             var settings = HttpContext.Current.Session.GetUserSettings();
             if(settings == null)
@@ -76,6 +71,6 @@ namespace ApiAiWeatherDemo.Controllers
                 HttpContext.Current.Session.SaveUserSettings(settings);
             }
             return settings;
-        }
+        }*/
     }
 }

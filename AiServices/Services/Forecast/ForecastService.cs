@@ -1,11 +1,11 @@
-﻿using ApiAiWeatherDemo.Forecast.Models;
+﻿using AiServices.Services.Forecast.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ApiAiWeatherDemo.Forecast
+namespace AiServices.Services.Forecast
 {
     public class ForecastService
     {

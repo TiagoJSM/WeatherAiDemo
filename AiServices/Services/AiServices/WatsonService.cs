@@ -1,4 +1,7 @@
-﻿using RestSharp;
+﻿using AiServices.Ai;
+using AiServices.Models.Watson;
+using ApiAiWeatherDemo.Models;
+using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
@@ -6,12 +9,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace ApiAiWeatherDemo.Ai.Models.Watson
+namespace AiServices.Services.AiServices
 {
-    public class WatsonService : IAiService
+    public class WatsonService : IAiService<WatsonQueryResponse>
     {
-        //public QueryResponse Query(WatsonQueryRequest userRequest)
-        public WatsonQueryResponse Query(string query, string sessionId)
+
+        public WatsonQueryResponse Query(string question)
         {
             var client = new RestClient("https://gateway.watsonplatform.net")
             {
@@ -25,11 +28,9 @@ namespace ApiAiWeatherDemo.Ai.Models.Watson
                 return null;
             }
 
-            
-
             request.AddParameter("client_id", response.Data.ClientId);
             request.AddParameter("conversation_id", response.Data.ConversationId);
-            request.AddParameter("input", query);
+            request.AddParameter("input", question);
 
             response = client.Execute<WatsonQueryResponse>(request);
             WatsonQueryResponse res = response.Data;
@@ -47,11 +48,6 @@ namespace ApiAiWeatherDemo.Ai.Models.Watson
             var city = res.Response.First();
 
             return res;
-        }
-
-        QueryResponse IAiService.Query(string query, string sessionId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

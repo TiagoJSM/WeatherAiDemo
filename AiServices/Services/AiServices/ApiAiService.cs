@@ -1,21 +1,28 @@
-﻿using ApiAiWeatherDemo.Ai.Models;
-using ApiAiWeatherDemo.Ai.Models.ApiAi;
+﻿using AiServices.Ai;
+using AiServices.Models.ApiAi;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ApiAiWeatherDemo.Ai
+namespace AiServices.Services.AiServices
 {
-    public class ApiAiService : IAiService
+    public class ApiAiService : IAiService<QueryApiResponse>
     {
-        public QueryApiResponse Query(string query, string sessionId)
+        private ApiAiUserSettings _settings;
+
+        public ApiAiService(ApiAiUserSettings settings)
+        {
+            _settings = settings;
+        }
+
+        public QueryApiResponse Query(string query)
         {
             var client = new RestClient("https://api.api.ai/v1/");
             var request = new RestRequest(@"query?v=20150910&query={query}&lang=en&sessionId={sessionId}", Method.GET);
             request.AddUrlSegment("query", query);
-            request.AddUrlSegment("sessionId", sessionId);
+            request.AddUrlSegment("sessionId", _settings.SessionId);
 
             request.AddHeader("Authorization", "Bearer 589e7b5ab7ce471db071a1d286e57a85");
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
@@ -33,11 +40,6 @@ namespace ApiAiWeatherDemo.Ai
             }
 
             return responseData;
-        }
-
-        QueryResponse IAiService.Query(string query, string sessionId)
-        {
-            throw new NotImplementedException();
         }
 
         public ApiAIIntentObject getIntents()
@@ -64,5 +66,6 @@ namespace ApiAiWeatherDemo.Ai
 
             return result;
         }
+
     }
 }

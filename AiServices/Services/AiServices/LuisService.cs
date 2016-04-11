@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using ApiAiWeatherDemo.Ai.Models;
 using RestSharp;
-using ApiAiWeatherDemo.Ai.Models.Luis;
+using AiServices.Models.Luis;
+using RestSharp.Extensions.MonoHttp;
+using AiServices.Ai;
 
-namespace ApiAiWeatherDemo.Ai
+namespace AiServices.Services.AiServices
 {
-    public class LuisService : IAiService
+    public class LuisService : IAiService<LuisQueryResponse>
     {
         public LuisQueryResponse Query(string query)
         {
@@ -39,11 +40,6 @@ namespace ApiAiWeatherDemo.Ai
             }
 
             return res;
-        }
-
-        QueryResponse IAiService.Query(string query, string sessionId)
-        {
-            throw new NotImplementedException();
         }
 
         public List<LuisIntentSample> getIntentSamples()

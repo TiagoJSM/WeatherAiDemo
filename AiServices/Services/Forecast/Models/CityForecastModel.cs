@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ApiAiWeatherDemo.Forecast.Models
+namespace AiServices.Services.Forecast.Models
 {
     public class Location
     {

@@ -1,5 +1,5 @@
-﻿using ApiAiWeatherDemo.Ai;
-using ApiAiWeatherDemo.Forecast;
+﻿using AiServices.Services.AiServices;
+using AiServices.Services.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
 using System.Collections.Generic;
@@ -14,8 +14,13 @@ namespace ApiAiWeatherDemo.Controllers
     public class LuisApiController : ApiController
     {
         //Change the service you want to use
-        private LuisService _aiService = new LuisService();
+        private LuisService _aiService;
         private ForecastService _forecastService = new ForecastService();
+
+        public LuisApiController(LuisService aiService)
+        {
+            _aiService = aiService;
+        }
 
         [Route("ask")]
         [HttpPost]
