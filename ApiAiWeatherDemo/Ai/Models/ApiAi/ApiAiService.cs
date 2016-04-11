@@ -21,22 +21,18 @@ namespace ApiAiWeatherDemo.Ai
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
 
             var response = client.Execute<QueryApiResponse>(request);
-            QueryApiResponse res = response.Data;
-            if (res.Status.Code != 200)
+            var responseData = response.Data;
+
+            if (responseData.Status.Code != 200)
+            {
+                return null;
+            }
+            if(responseData.Result.Score < 0.90)
             {
                 return null;
             }
 
-            if(res.Result.Score < 0.75)
-            {
-                return null;
-            }
-
-            if(res.Result.Parameters.GeoCity == null || res.Result.Action != "getWeather")
-            {
-                return null;
-            }
-            return res;
+            return responseData;
         }
 
         QueryResponse IAiService.Query(string query, string sessionId)

@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using ApiAiWeatherDemo.Extensions;
+using ApiAiWeatherDemo.Forecast.Models;
 
 namespace ApiAiWeatherDemo.Controllers
 {
@@ -26,22 +27,23 @@ namespace ApiAiWeatherDemo.Controllers
         {
             var settings = GetUserSettings();
             var aiResponse = _aiService.Query(model.Question, settings.ApiAiSessionId);
+
             if (aiResponse == null)
             {
                 return BadRequest();
             }
+
             var city = aiResponse.Result.Parameters.GeoCity;
             var forecastResponse = _forecastService.GetFromCity(city);
-        
-            model.City = city;
-            model.ForecastResult = forecastResponse;
-            model.ApiAIResponse = aiResponse;
-            
-            if(forecastResponse.current == null)
+
+            if (forecastResponse.current == null)
             {
                 return NotFound();
             }
-            model.City = city;
+
+            model.City = forecastResponse.location.name;
+            model.ForecastResult = forecastResponse;
+            model.ApiAIResponse = aiResponse;
             model.ForecastResult = forecastResponse;
 
             return Ok(model);
