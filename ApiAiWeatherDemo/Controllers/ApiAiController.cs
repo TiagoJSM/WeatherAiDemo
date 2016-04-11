@@ -15,7 +15,7 @@ using AiServices.Services.Forecast;
 namespace ApiAiWeatherDemo.Controllers
 {
     [RoutePrefix("api/apiai")]
-    public class ApiAiController : ApiController
+    public class ApiAiController : WeatherApiController
     {
         //Change the service you want to use
         private ApiAiService _aiService;
@@ -23,6 +23,7 @@ namespace ApiAiWeatherDemo.Controllers
         private ForecastService _forecastService = new ForecastService();
 
         public ApiAiController(ApiAiService aiService, IApiAiWeatherService weatherService)
+            : base(weatherService)
         {
             _aiService = aiService;
             _weatherService = weatherService;
@@ -32,16 +33,7 @@ namespace ApiAiWeatherDemo.Controllers
         [HttpPost]
         public IHttpActionResult Post(WeatherQuestionModel model)
         {
-            var weatherResponse = _weatherService.Query(model.Question);
-            if (weatherResponse == null)
-            {
-                return BadRequest();
-            }
-            if (weatherResponse.ForecastResult == null)
-            {
-                return NotFound();
-            }
-            return Ok(weatherResponse);
+            return QueryWeather(model.Question);
         }
 
         [Route("intents")]

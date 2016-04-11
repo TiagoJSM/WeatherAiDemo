@@ -1,4 +1,5 @@
-﻿using AiServices.Services.AiServices;
+﻿using AiServices;
+using AiServices.Services.AiServices;
 using AiServices.Services.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
@@ -11,34 +12,23 @@ using System.Web.Http;
 namespace ApiAiWeatherDemo.Controllers
 {
     [RoutePrefix("api/watson")]
-    public class WatsonApiController : ApiController
+    public class WatsonApiController : WeatherApiController
     {
-        private WatsonService _aiService = new WatsonService();
-        private ForecastService _forecastService = new ForecastService();
+        private WatsonService _aiService;
+        private IWatsonWeatherService _weatherService;
+
+        public WatsonApiController(WatsonService aiService, IWatsonWeatherService weatherService)
+            : base(weatherService)
+        {
+            _aiService = aiService;
+            _weatherService = weatherService;
+        }
 
         [Route("ask")]
         [HttpPost]
         public IHttpActionResult Post(WeatherQuestionModel model)
         {
-            var aiResponse = _aiService.Query(model.Question);
-            var city = default(string);
-            if (aiResponse != null)
-            {
-                city = aiResponse.Response.First();
-                var forecastResponse = _forecastService.GetFromCity(city);
-                model.City = city;
-                model.ForecastResult = forecastResponse;
-                model.WatsonResponse = aiResponse;
-                if (forecastResponse.current == null)
-                {
-                    return NotFound();
-                }
-            }
-            else
-            {
-                return NotFound();
-            }
-            return Ok(model);
+            return QueryWeather(model.Question);
         }
     }
 }

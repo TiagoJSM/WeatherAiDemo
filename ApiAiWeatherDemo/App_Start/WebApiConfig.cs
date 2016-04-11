@@ -27,6 +27,8 @@ namespace ApiAiWeatherDemo
             var container = new UnityContainer();
             container
                 .RegisterType<IApiAiWeatherService, ApiAiWeatherService>()
+                .RegisterType<ILuisWeatherService, LuisWeatherService>()
+                .RegisterType<IWatsonWeatherService, WatsonWeatherService>()
                 .RegisterType<UserSettings>(
                     new InjectionFactory(c =>
                     {

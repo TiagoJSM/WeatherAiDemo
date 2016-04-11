@@ -1,4 +1,5 @@
-﻿using AiServices.Services.AiServices;
+﻿using AiServices;
+using AiServices.Services.AiServices;
 using AiServices.Services.Forecast;
 using ApiAiWeatherDemo.Models;
 using System;
@@ -11,40 +12,23 @@ using System.Web.Http;
 namespace ApiAiWeatherDemo.Controllers
 {
     [RoutePrefix("api/luis")]
-    public class LuisApiController : ApiController
+    public class LuisApiController : WeatherApiController
     {
         //Change the service you want to use
         private LuisService _aiService;
-        private ForecastService _forecastService = new ForecastService();
+        private ILuisWeatherService _weatherService;
 
-        public LuisApiController(LuisService aiService)
+        public LuisApiController(ILuisWeatherService weatherService)
+            : base(weatherService)
         {
-            _aiService = aiService;
+            _weatherService = weatherService;
         }
 
         [Route("ask")]
         [HttpPost]
         public IHttpActionResult Post(WeatherQuestionModel model)
         {
-            var aiResponse = _aiService.Query(model.Question);
-            var city = default(string);
-            if (aiResponse != null)
-            {
-                city = aiResponse.entities[0].entity;
-                var forecastResponse = _forecastService.GetFromCity(city);
-                model.City = city;
-                model.ForecastResult = forecastResponse;
-                model.LuisResponse = aiResponse;
-                if (forecastResponse.current == null)
-                {
-                    return NotFound();
-                }
-            }
-            else
-            {
-                return NotFound();
-            }
-            return Ok(model);
+            return QueryWeather(model.Question);
         }
     }
 }

@@ -21,7 +21,7 @@
                 var city = queryLocation.name;
                 var region = queryLocation.region;
                 var country = queryLocation.country;
-                $scope.aiResponseData = response.WatsonResponse;
+                $scope.aiResponseData = response.AiResponse;
                 $scope.chat.unshift({
                     self: false,
                     msgs: [
