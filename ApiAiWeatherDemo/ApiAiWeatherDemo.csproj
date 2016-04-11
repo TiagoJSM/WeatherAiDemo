@@ -204,7 +204,6 @@
     <Compile Include="Controllers\LuisApiController.cs" />
     <Compile Include="Controllers\LuisController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ApiaiController.cs" />
     <Compile Include="Controllers\WatsonController.cs" />
     <Compile Include="Forecast\ForecastService.cs" />
     <Compile Include="Forecast\Models\CityForecastModel.cs" />
@@ -292,10 +291,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Apiai\Index.cshtml" />
     <Content Include="Views\Luis\Index.cshtml" />
     <Content Include="Views\Watson\Index.cshtml" />
-    <Content Include="Views\Apiai\Intents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
