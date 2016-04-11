@@ -13,14 +13,20 @@
         $http.post("/api/apiai/ask", { question: $scope.comment })
             .success(function successCallback(response) {
                 var forecast = response.ForecastResult.current;
+                var queryLocation = response.ForecastResult.location;
                 var temperature = forecast.temp_c;
                 var realFeeling = forecast.feelslike_c;
                 var humidity = forecast.humidity;
                 var pressure = forecast.pressure_in;
+                var city = queryLocation.name;
+                var region = queryLocation.region;
+                var country = queryLocation.country;
                 $scope.aiResponseData = response.ApiAIResponse;
                 $scope.chat.unshift({
                     self: false,
                     msgs: [
+                        city + ", " + region,
+                        country,
                         "The temperature is " + temperature + "℃",
                         "But feels like " + realFeeling + "℃",
                         "Humidity is " + humidity + " and pressure is " + pressure,
@@ -51,7 +57,9 @@
     }
 
     $scope.showAIResponse = function (data) {
-               $scope.aiResponseData = data;
+        if(data != ""){
+            $scope.aiResponseData = data;
+        }
             }
 }];
 
