@@ -39,6 +39,8 @@ namespace AiServices.Models.ApiAi
     {
         public int Code { get; set; }
         public string ErrorType { get; set; }
+        public String errorId { get; set; }
+        public String errorDetails { get; set; }
     }
 
     public class QueryApiResponse

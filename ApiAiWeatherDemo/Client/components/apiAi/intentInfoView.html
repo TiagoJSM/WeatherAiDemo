@@ -3,20 +3,6 @@
     <p>Here are a list of intents we are using with API AI</p>
 
     <div>
-        <label>ID: </label>
-        <p>{{intentInfo.id}}</p>
-    </div>
-    <div>
-        <label>Name: </label>
-        <p>{{intentInfo.name}}</p>
-    </div>
-    <div>
-        <label>Templates: </label>
-        <p>These phrases are used to train the intent</p>
-        <ul>
-            <li ng-repeat="template in intentInfo.templates">{{template}}</li>
-        </ul>
-    </div>
-    <div>
+        <pre>{{intentInfo | json}}</pre>
     </div>
 </div>

@@ -1,6 +1,6 @@
 ﻿var luisIntentController = ["$scope", "$http", function ($scope, $http) {
 
-    $http.get("/api/apiai/intents")
+    $http.get("/api/luis/intents")
         .then(function successCallback(response) {
             $scope.intentInfo = response.data
         }, function errorCallback(response) {
