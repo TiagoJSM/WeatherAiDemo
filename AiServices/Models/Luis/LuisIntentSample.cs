@@ -26,7 +26,7 @@ namespace AiServices.Models.Luis
     public class EntityResult
     {
         public String name { get; set; }
-        public List<Indece> indeces { get; set; }
+        public Indece indeces { get; set; }
         public String work { get; set; }
         public String color { get; set; }
         public Boolean isBuiltInExtractor { get; set; }

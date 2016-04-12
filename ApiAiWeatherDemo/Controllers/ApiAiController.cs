@@ -50,6 +50,28 @@ namespace ApiAiWeatherDemo.Controllers
             return Ok(aiResponse);
         }
 
+        [Route("intents/update")]
+        [HttpPut]
+        public IHttpActionResult Put(ApiAIIntentObject intent)
+        {
+            ApiAiStatusObject response = _aiService.updateIntent(intent);
+            
+            if(response.status.Code == 400)
+            {
+                return BadRequest();
+            }
+            else if(response.status.Code == 500)
+            {
+                return InternalServerError();
+            }
+            else if(response.status.Code == 401)
+            {
+                return Unauthorized();
+            }
+
+            return Ok();
+        }
+
         /*private UserSettings GetUserSettings()
         {
             var settings = HttpContext.Current.Session.GetUserSettings();

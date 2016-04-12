@@ -52,6 +52,7 @@
     <Compile Include="IApiAiWeatherService.cs" />
     <Compile Include="ILuisWeatherService.cs" />
     <Compile Include="IWatsonWeatherService.cs" />
+    <Compile Include="Models\ApiAi\ApiAiStatusObject.cs" />
     <Compile Include="Models\ApiAi\ApiAiUserSettings.cs" />
     <Compile Include="Services\AiServices\ApiAiService.cs" />
     <Compile Include="IWeatherService.cs" />

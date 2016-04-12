@@ -19,9 +19,10 @@ namespace ApiAiWeatherDemo.Controllers
         private LuisService _aiService;
         private ILuisWeatherService _weatherService;
 
-        public LuisApiController(ILuisWeatherService weatherService)
+        public LuisApiController(LuisService aiService, ILuisWeatherService weatherService)
             : base(weatherService)
         {
+            _aiService = aiService;
             _weatherService = weatherService;
         }
 

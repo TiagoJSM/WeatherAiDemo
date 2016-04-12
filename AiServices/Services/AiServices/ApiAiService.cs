@@ -67,5 +67,21 @@ namespace AiServices.Services.AiServices
             return result;
         }
 
+        public ApiAiStatusObject updateIntent(ApiAIIntentObject intent)
+        {
+            var client = new RestClient("https://api.api.ai/v1/");
+            var request = new RestRequest(@"intents/{id}?v=20150910", Method.PUT);
+            request.AddUrlSegment("id", intent.id);
+            request.AddHeader("Authorization", "Bearer 589e7b5ab7ce471db071a1d286e57a85");
+            request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
+            request.AddJsonBody(intent);
+
+            var singleIntentResponse = client.Execute<ApiAiStatusObject>(request);
+
+            ApiAiStatusObject result = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiAiStatusObject>(singleIntentResponse.Content);
+
+            return result;
+        }
+
     }
 }
