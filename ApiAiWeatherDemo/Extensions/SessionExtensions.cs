@@ -10,6 +10,8 @@ namespace ApiAiWeatherDemo.Extensions
     public class UserSettings
     {
         public string ApiAiSessionId { get; set; }
+        public int WatsonClientId { get; set; }
+        public int WatsonConversationId { get; set; }
     }
     public static class SessionExtensions
     {

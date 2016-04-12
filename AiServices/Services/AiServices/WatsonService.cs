@@ -13,6 +13,12 @@ namespace AiServices.Services.AiServices
 {
     public class WatsonService : IAiService<WatsonQueryResponse>
     {
+        private WatsonUserSettings _userSettings;
+
+        public WatsonService(WatsonUserSettings userSettings)
+        {
+            _userSettings = userSettings;
+        }
 
         public WatsonQueryResponse Query(string question)
         {
@@ -21,18 +27,18 @@ namespace AiServices.Services.AiServices
                 Authenticator = new HttpBasicAuthenticator("200717c0-b5d8-4d36-8409-ff6eeef50a9a", "hoevZzE8cedp")
             };
             var request = new RestRequest(@"dialog/api/v1/dialogs/1ae4bebe-3c6c-4968-9a48-80ce5c8566c8/conversation", Method.POST);
-            var response = client.Execute<WatsonQueryResponse>(request);
+            /*var response = client.Execute<WatsonQueryResponse>(request);
 
             if (response.StatusCode != HttpStatusCode.Created)
             {
                 return null;
-            }
+            }*/
 
-            request.AddParameter("client_id", response.Data.ClientId);
-            request.AddParameter("conversation_id", response.Data.ConversationId);
+            request.AddParameter("client_id", _userSettings.ClientId);
+            request.AddParameter("conversation_id", _userSettings.ConversationId);
             request.AddParameter("input", question);
 
-            response = client.Execute<WatsonQueryResponse>(request);
+            var response = client.Execute<WatsonQueryResponse>(request);
             WatsonQueryResponse res = response.Data;
             
             if (response.StatusCode != HttpStatusCode.Created)
