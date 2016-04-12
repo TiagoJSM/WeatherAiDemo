@@ -1,5 +1,6 @@
 ﻿var luisAiController = ["$scope", "$http", "$controller", function ($scope, $http, $controller) {
     $scope.askPath = "/api/luis/ask";
+    $scope.apiName = "Luis";
     $controller('BaseAiServiceController', { $scope: $scope });
 }];
 

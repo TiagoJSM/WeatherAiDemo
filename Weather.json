@@ -1,0 +1,459 @@
+{
+  "luis_schema_version": "1.2.0",
+  "name": "Weather",
+  "desc": "Get the weather based on the users commands",
+  "culture": "en-us",
+  "intents": [
+    {
+      "Name": "None",
+      "Children": []
+    },
+    {
+      "Name": "getWeather",
+      "Children": []
+    }
+  ],
+  "entities": [
+    {
+      "Name": "location",
+      "Children": []
+    },
+    {
+      "Name": "datetime",
+      "Children": []
+    }
+  ],
+  "bing_entities": [],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "what is the weather like in edinburgh",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in",
+      "intent": "getWeather",
+      "entities": []
+    },
+    {
+      "text": "i'm in edinburgh, what is the weather like ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in edinburgh tomorrow",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "datetime",
+          "startPos": 7,
+          "endPos": 7
+        },
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "what is the weather in edinburgh",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what is the weather in edinburgh ?",
+      "intent": "getWeather",
+      "entities": []
+    },
+    {
+      "text": "what is the weather like in edinburgh ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "what's it like outside in edinburgh ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "what is the weather in edinburgh?",
+      "intent": "getWeather",
+      "entities": []
+    },
+    {
+      "text": "what is the weather like in edinburgh?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in london ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in new york ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "what's the weather like in aberdeen ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "what's the weather like in armagh ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "what's the weather like in bangor ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in bath ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in belfast ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in birmingham ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what is the weather is bradford ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what's the weather like in cardiff ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in cardiff ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in london ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in glasgow ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in glasgow ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "what's the weather like in kingston upon hull ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in kingston upon hull ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in inverness ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in st albans",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in st asaph",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in st david's ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in st david's ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in st asaph ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "whats the weather like in stirling ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "whats the weather in southampton",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in perth, uk ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in perth, australia ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in london, uk ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "what's the weather like in perth, uk ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 7,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in edinburgh, uk ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "what is the weather like in london, canada ?",
+      "intent": "getWeather",
+      "entities": [
+        {
+          "entity": "location",
+          "startPos": 6,
+          "endPos": 8
+        }
+      ]
+    }
+  ]
+}

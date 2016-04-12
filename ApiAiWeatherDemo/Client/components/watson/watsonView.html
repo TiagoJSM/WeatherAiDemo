@@ -14,7 +14,7 @@
             <ol class="chat">
                 <li ng-repeat="speech in chat" class="{{speech.self ? 'self' : 'other'}}" ng-click="showAIResponse(speech.aiResponse)">
                     <div class="msg">
-                        <div class="user">{{speech.self ? 'You' : 'API AI'}}</div>
+                        <div class="user">{{speech.self ? 'You' : apiName}}</div>
                         <p ng-repeat="msg in speech.msgs">{{msg}}</p>
                     </div>
                 </li>
