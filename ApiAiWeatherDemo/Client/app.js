@@ -13,7 +13,7 @@
                 controller: "ApiAiController"
             })
               .state("apiaiIntentInfo", {
-                  url: "/apiai/intentInfo",
+                  url: "/apiai/intents",
                   templateUrl: "Client/components/apiAi/intentInfoView.html",
                   controller: "ApiAiIntentController"
               })
@@ -21,6 +21,11 @@
                 url: "/luis",
                 templateUrl: "Client/components/luis/luisView.html",
                 controller: "LuisAiController"
+            })
+            .state("luisIntentInfo", {
+                url: "/luis/intents",
+                templateUrl: "Client/components/luis/intentInfoView.html",
+                controller: "LuisIntentController"
             })
             .state("watson", {
                 url: "/watson",

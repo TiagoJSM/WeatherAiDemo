@@ -11,10 +11,16 @@ namespace AiServices.Models.ApiAi
         public String value { get; set; }
     }
 
+    public class Context
+    {
+        public String name { get; set; }
+        public int lifespan { get; set; }
+    }
+
     public class Response
     {
         public String action { get; set; }
-        public List<String> affectedContexts { get; set; }
+        public List<Context> affectedContexts { get; set; }
         public List<Parameter> parameters { get; set; }
     }
 
@@ -22,7 +28,7 @@ namespace AiServices.Models.ApiAi
     {
         public String id { get; set; }
         public String name { get; set; }
-        public List<String> contexts { get; set; }
+        public List<Context> contexts { get; set; }
         public List<String> templates { get; set; }
         public List<Response> responses { get; set; }
     }

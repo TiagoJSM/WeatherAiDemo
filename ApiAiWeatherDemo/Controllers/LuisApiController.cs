@@ -1,6 +1,7 @@
 ﻿using AiServices;
 using AiServices.Services.AiServices;
 using AiServices.Services.Forecast;
+using AiServices.Models.Luis;
 using ApiAiWeatherDemo.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,18 @@ namespace ApiAiWeatherDemo.Controllers
         public IHttpActionResult Post(WeatherQuestionModel model)
         {
             return QueryWeather(model.Question);
+        }
+
+        [Route("intents")]
+        [HttpGet]
+        public IHttpActionResult Get()
+        {
+            List<LuisIntentSample> aiResponse = _aiService.getIntentSamples();
+            if (aiResponse == null)
+            {
+                return NotFound();
+            }
+            return Ok(aiResponse);
         }
     }
 }
