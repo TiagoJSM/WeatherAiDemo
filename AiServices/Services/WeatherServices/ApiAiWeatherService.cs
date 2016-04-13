@@ -20,7 +20,7 @@ namespace AiServices.Services.WeatherServices
 
         protected override string GetLocationFromResponse(QueryApiResponse queryResponse)
         {
-            return queryResponse.Result.Parameters.GeoCity;
+            return queryResponse.Result?.Parameters?.GeoCity;
         }
     }
 }

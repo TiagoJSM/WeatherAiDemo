@@ -7,6 +7,7 @@ using ApiAiWeatherDemo.Models;
 using AiServices.Services.Forecast;
 using AiServices.Ai;
 using System.Diagnostics;
+using AiServices.Services.Forecast.Models;
 
 namespace AiServices.Services.WeatherServices
 {
@@ -31,15 +32,15 @@ namespace AiServices.Services.WeatherServices
                 return null;
             }
 
-            var city = default(string);
-            var forecastExecutionTime = GetExecutionTime(() => city = GetLocationFromResponse(aiResponse));
+            var city = GetLocationFromResponse(aiResponse);
             if (city == null)
             {
                 return null;
             }
 
-            var forecastResponse = _forecastService.GetFromCity(city);
-            var response = new QueryResponse();
+            var forecastResponse = default(CityForecastModel);
+            var forecastExecutionTime = GetExecutionTime(() => forecastResponse = _forecastService.GetFromCity(city));
+
             if (forecastResponse == null)
             {
                 return new QueryResponse()
@@ -50,15 +51,15 @@ namespace AiServices.Services.WeatherServices
                     AiExecutionTime = aiExecutionTime
                 };
             }
-                if (forecastResponse.current == null)
+            if (forecastResponse.current == null)
+            {
+                return new QueryResponse()
                 {
-                    return new QueryResponse()
-                    {
-                        City = city,
-                        ForecastResult = forecastResponse,
-                        AiResponse = aiResponse
-                    };
-                }
+                    City = city,
+                    ForecastResult = forecastResponse,
+                    AiResponse = aiResponse
+                };
+            }
 
             return new QueryResponse()
             {

@@ -41,6 +41,10 @@
                 }
             }).error(function errorCallback(response, statusCode) {
                 $scope.aiResponseData = response.AiResponse;
+                $scope.forecastResult = response.ForecastResult;
+                $scope.aiExecutionTime = response.AiExecutionTime;
+                $scope.forecastExecutionTime = response.ForecastExecutionTime;
+
                 if (statusCode === 400) {
                     addBotChat(["I'm sorry, I didn't get that, can you ask in some other way, please"]);
                 }

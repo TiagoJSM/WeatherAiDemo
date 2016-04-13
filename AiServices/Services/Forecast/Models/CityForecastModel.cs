@@ -45,9 +45,16 @@ namespace AiServices.Services.Forecast.Models
         public int code { get; set; }
     }
 
+    public class Error
+    {
+        public int code { get; set; }
+        public string message { get; set; }
+    }
+
     public class CityForecastModel
     {
         public Location location { get; set; }
         public Current current { get; set; }
+        public Error error { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace ApiAiWeatherDemo.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            if (weatherResponse.ForecastResult == null)
+            if (weatherResponse.ForecastResult.error != null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, weatherResponse);
             }
