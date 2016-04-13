@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAiWeatherDemo", "ApiAiWe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiServices", "AiServices\AiServices.csproj", "{A72E165E-43A2-4FE3-B012-5C2A3A0AB24C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1A2D3F04-579B-4B4B-B0F2-8197B495919C}"
+	ProjectSection(SolutionItems) = preProject
+		WatsonWeather.xml = WatsonWeather.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

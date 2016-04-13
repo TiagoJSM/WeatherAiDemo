@@ -5,9 +5,12 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
+using System.Xml.Linq;
 
 namespace AiServices.Services.AiServices
 {
@@ -37,17 +40,25 @@ namespace AiServices.Services.AiServices
             
             if (response.StatusCode != HttpStatusCode.Created)
             {
-                return null;
+                return res;
             }
 
             if (res.Confidence < 0.9)
             {
-                return null;
+                return res;
             }
 
             var city = res.Response.First();
 
             return res;
+        }
+
+        public String getWatsonSchema()
+        {
+            string schemaPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),"@SolutionItems/WatsonWeather.xml");
+            var schema = XDocument.Load(schemaPath);
+
+            return schema.ToString();
         }
     }
 }

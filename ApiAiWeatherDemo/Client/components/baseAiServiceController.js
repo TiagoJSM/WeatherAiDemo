@@ -34,22 +34,26 @@
                     aiResponse: $scope.aiResponseData
                 });
             }).error(function errorCallback(response, statusCode) {
+                $scope.aiResponseData = response.AiResponse;
                 if (statusCode === 400) {
                     $scope.chat.unshift({
                         self: false,
-                        msgs: ["I'm sorry, I didn't get that, can you ask in some other way, please"]
+                        msgs: ["I'm sorry, I didn't get that, can you ask in some other way, please"],
+                        aiResponse: $scope.aiResponseData
                     });
                 }
                 else if (statusCode === 404) {
                     $scope.chat.unshift({
                         self: false,
-                        msgs: ["I'm sorry, I don't know that place, can you be more specific or ask about somewhere else"]
+                        msgs: ["I'm sorry, I don't know that place, can you be more specific or ask about somewhere else"],
+                        aiResponse: $scope.aiResponseData
                     });
                 }
                 else {
                     $scope.chat.unshift({
                         self: false,
-                        msgs: ["There was an error, I asssure you we have the best code monkeys working to sort it out"]
+                        msgs: ["There was an error, I asssure you we have the best code monkeys working to sort it out"],
+                        aiResponse: $scope.aiResponseData
                     });
                 }
             });
