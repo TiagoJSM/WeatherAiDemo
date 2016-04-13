@@ -17,6 +17,11 @@
                   templateUrl: "Client/components/apiAi/intentInfoView.html",
                   controller: "ApiAiIntentController"
               })
+            .state("apiaiUpdateIntentInfo", {
+                url: "/apiai/intents/update",
+                templateUrl: "Client/components/apiAi/apiAiUpdateIntentView.html",
+                controller: "UpdateApiAiIntentController"
+            })
             .state("luis", {
                 url: "/luis",
                 templateUrl: "Client/components/luis/luisView.html",

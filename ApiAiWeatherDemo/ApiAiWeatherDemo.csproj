@@ -216,8 +216,10 @@
     <Content Include="Client\app.js" />
     <Content Include="Client\components\apiAi\apiAiController.js" />
     <Content Include="Client\components\apiAi\apiAiIntentController.js" />
+    <Content Include="Client\components\apiAi\apiAiUpdateIntentView.html" />
     <Content Include="Client\components\apiAi\apiAiView.html" />
     <Content Include="Client\components\apiAi\intentInfoView.html" />
+    <Content Include="Client\components\apiAi\updateApiAiIntentController.js" />
     <Content Include="Client\components\baseAiServiceController.js" />
     <Content Include="Client\components\index\indexView.html" />
     <Content Include="Client\components\luis\intentInfoView.html" />
