@@ -2,7 +2,7 @@
     $scope.comment = "";
     $scope.chat = [];
     $scope.aiResponseData = "";
-    $scope.ForecastResult = "";
+    $scope.forecastResult = "";
 
     $scope.sendText = function () {
         $scope.chat.unshift({
@@ -16,7 +16,7 @@
                 var forecast = response.ForecastResult.current;
                 var queryLocation = response.ForecastResult.location;
                 $scope.aiResponseData = response.AiResponse;
-                $scope.ForecastResult = response.ForecastResult;
+                $scope.forecastResult = response.ForecastResult;
                 if (forecast || queryLocation != null) {
                     var temperature = forecast.temp_c;
                     var realFeeling = forecast.feelslike_c;
@@ -35,14 +35,14 @@
                             "Humidity is " + humidity + " and pressure is " + pressure,
                         ],
                         aiResponse: $scope.aiResponseData,
-                        forecastResult: $scope.ForecastResult
+                        forecastResult: $scope.forecastResult
                     });
                 } else {
                     $scope.chat.unshift({
                         self: false,
                         msgs: ["I'm sorry, I didn't get that, can you ask in some other way, please"],
                         aiResponse: $scope.aiResponseData,
-                        forecastResult: $scope.ForecastResult
+                        forecastResult: $scope.forecastResult
                     });
                 }
             }).error(function errorCallback(response, statusCode) {
@@ -52,7 +52,7 @@
                         self: false,
                         msgs: ["I'm sorry, I didn't get that, can you ask in some other way, please"],
                         aiResponse: $scope.aiResponseData,
-                        forecastResult: $scope.ForecastResult
+                        forecastResult: $scope.forecastResult
                     });
                 }
                 else if (statusCode === 404) {
@@ -60,7 +60,7 @@
                         self: false,
                         msgs: ["I'm sorry, I don't know that place, can you be more specific or ask about somewhere else"],
                         aiResponse: $scope.aiResponseData,
-                        forecastResult: $scope.ForecastResult
+                        forecastResult: $scope.forecastResult
                     });
                 }
                 else {
@@ -68,7 +68,7 @@
                         self: false,
                         msgs: ["There was an error, I asssure you we have the best code monkeys working to sort it out"],
                         aiResponse: $scope.aiResponseData,
-                        forecastResult: $scope.ForecastResult
+                        forecastResult: $scope.forecastResult
                     });
                 }
             });
