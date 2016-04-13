@@ -43,14 +43,24 @@ namespace AiServices.Services.WeatherServices
 
         private string GetWeather(LuisQueryResponse queryResponse)
         {
-            var location = queryResponse.entities[0].entity;
-            _contextSession.SaveContext(new LuisContext() { Location = location });
+            var location = "";
+
+            if (queryResponse.entities.Length == 0)
+            {
+                location = "";
+            }
+            else if (queryResponse.entities.Length > 0)
+            {
+                location = queryResponse.entities[0].entity;
+                _contextSession.SaveContext(new LuisContext() { Location = location });
+            }
+
             return location;
         }
 
         private string GetWeatherContext(LuisQueryResponse queryResponse)
         {
-            return _contextSession.GetContext()?.Location;
+            return _contextSession.GetContext()?.Location;   
         }
     }
 }

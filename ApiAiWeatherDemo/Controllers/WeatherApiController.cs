@@ -17,18 +17,18 @@ namespace ApiAiWeatherDemo.Controllers
             _weatherService = weatherService;
         }
 
-        protected IHttpActionResult QueryWeather(string question)
+        protected HttpResponseMessage QueryWeather(string question)
         {
             var weatherResponse = _weatherService.Query(question);
             if (weatherResponse == null)
             {
-                return BadRequest();
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
             if (weatherResponse.ForecastResult == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound,weatherResponse);
             }
-            return Ok(weatherResponse);
+            return Request.CreateResponse(HttpStatusCode.OK, weatherResponse);
         }
     }
 }

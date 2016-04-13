@@ -26,7 +26,7 @@ namespace ApiAiWeatherDemo.Controllers
 
         [Route("ask")]
         [HttpPost]
-        public IHttpActionResult Post(WeatherQuestionModel model)
+        public HttpResponseMessage Post(WeatherQuestionModel model)
         {
             return QueryWeather(model.Question);
         }
