@@ -69,7 +69,7 @@ namespace ApiAiWeatherDemo.Controllers
                 return Unauthorized();
             }
 
-            return Ok();
+            return Ok(response);
         }
 
         /*private UserSettings GetUserSettings()

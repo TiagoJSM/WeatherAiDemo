@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+.edit-intent-textarea{
+    max-height: 500px;
+    max-width: 500px;
+}
+
 .chat-container {
     margin-top: 50px;
     width: 500px;

@@ -1,0 +1,12 @@
+﻿<div>
+    <h2>API AI</h2>
+    <p>Below is the intent object, add new items to the template array to improve the training of the intent!</p>
+</div>
+
+
+<textarea rows="30" cols="80" ng-model="intentInfo" class="edit-intent-textarea">{{intentInfo | json}} </textarea>
+<input type="submit" value="Update" ng-click="updateIntent()" />
+<div>
+    Response:
+    <pre>{{intentStatus | json}}</pre>
+</div>

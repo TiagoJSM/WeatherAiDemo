@@ -72,9 +72,13 @@ namespace AiServices.Services.AiServices
             var client = new RestClient("https://api.api.ai/v1/");
             var request = new RestRequest(@"intents/{id}?v=20150910", Method.PUT);
             request.AddUrlSegment("id", intent.id);
-            request.AddHeader("Authorization", "Bearer 589e7b5ab7ce471db071a1d286e57a85");
+            request.AddHeader("Authorization", "Bearer 0d5d0cae1cc1475ba2dd556326dd5587"); //Developer access token 0d5d0cae1cc1475ba2dd556326dd5587
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
-            request.AddJsonBody(intent);
+            request.AddHeader("Content-Type", "application/json; charset=utf-8");
+            request.AddHeader("Accept", "application/json");
+            //request.JsonSerializer.ContentType = "application/json; charset=utf-8";
+            request.AddBody(Newtonsoft.Json.JsonConvert.SerializeObject(intent));
+            //request.AddParameter("application/json", , ParameterType.RequestBody);
 
             var singleIntentResponse = client.Execute<ApiAiStatusObject>(request);
 
