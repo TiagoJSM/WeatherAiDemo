@@ -11,14 +11,46 @@ namespace AiServices.Services.WeatherServices
 {
     public class LuisWeatherService : BaseWeatherService<LuisQueryResponse>, ILuisWeatherService
     {
-        public LuisWeatherService(LuisService aiService, ForecastService forecastService)
+        private ILuisContextSession _contextSession;
+        private Dictionary<string, Func<LuisQueryResponse, string>> _intentMapping;
+
+        public LuisWeatherService(LuisService aiService, ForecastService forecastService, ILuisContextSession contextSession)
             : base(forecastService, aiService)
         {
+            _contextSession = contextSession;
+            _intentMapping = new Dictionary<string, Func<LuisQueryResponse, string>>()
+                {
+                    ["getWeather"] = GetWeather,
+                    ["getWeatherContext"] = GetWeatherContext
+            };
         }
 
         protected override string GetLocationFromResponse(LuisQueryResponse queryResponse)
         {
-            return queryResponse.entities[0].entity;
+            var intent = queryResponse.intents.FirstOrDefault();
+            if(intent == null)
+            {
+                return null;
+            }
+
+            Func<LuisQueryResponse, string> resolver;
+            if (_intentMapping.TryGetValue(intent.intent, out resolver))
+            {
+                return resolver(queryResponse);
+            }
+            return null;
+        }
+
+        private string GetWeather(LuisQueryResponse queryResponse)
+        {
+            var location = queryResponse.entities[0].entity;
+            _contextSession.SaveContext(new LuisContext() { Location = location });
+            return location;
+        }
+
+        private string GetWeatherContext(LuisQueryResponse queryResponse)
+        {
+            return _contextSession.GetContext()?.Location;
         }
     }
 }

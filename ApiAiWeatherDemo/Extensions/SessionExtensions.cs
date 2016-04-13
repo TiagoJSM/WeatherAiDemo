@@ -12,6 +12,7 @@ namespace ApiAiWeatherDemo.Extensions
         public string ApiAiSessionId { get; set; }
         public int WatsonClientId { get; set; }
         public int WatsonConversationId { get; set; }
+        public string LuisLocationContext { get; set; }
     }
     public static class SessionExtensions
     {

@@ -5,6 +5,7 @@ using AiServices.Services.AiServices;
 using AiServices.Services.WeatherServices;
 using ApiAiWeatherDemo.App_Start;
 using ApiAiWeatherDemo.Extensions;
+using ApiAiWeatherDemo.SessionManagement;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ namespace ApiAiWeatherDemo
                 .RegisterType<ILuisWeatherService, LuisWeatherService>()
                 .RegisterType<IWatsonWeatherService, WatsonWeatherService>()
                 .RegisterType<IWatsonLoginService, WatsonLoginService>()
+                .RegisterType<ILuisContextSession, LuisContextSession>()
                 .RegisterType<UserSettings>(
                     new InjectionFactory(c =>
                     {

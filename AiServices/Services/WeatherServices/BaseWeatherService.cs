@@ -28,8 +28,12 @@ namespace AiServices.Services.WeatherServices
             {
                 return null;
             }
-
             var city = GetLocationFromResponse(aiResponse);
+            if(city == null)
+            {
+                return null;
+            }
+
             var forecastResponse = _forecastService.GetFromCity(city);
             var response = new QueryResponse();
 
