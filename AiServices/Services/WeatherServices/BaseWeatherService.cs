@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using ApiAiWeatherDemo.Models;
 using AiServices.Services.Forecast;
 using AiServices.Ai;
+using System.Diagnostics;
 
 namespace AiServices.Services.WeatherServices
 {
-    public abstract class BaseWeatherService<TQueryResponse> : IWeatherService
+    public abstract class BaseWeatherService<TQueryResponse> : IWeatherService where TQueryResponse : class
     {
         private ForecastService _forecastService;
         private IAiService<TQueryResponse> _aiService;
@@ -22,14 +23,17 @@ namespace AiServices.Services.WeatherServices
 
         public QueryResponse Query(string question)
         {
-            var aiResponse = _aiService.Query(question);
+            TQueryResponse aiResponse = null;
+            var aiExecutionTime = GetExecutionTime(() => aiResponse = _aiService.Query(question));
 
             if (aiResponse == null)
             {
                 return null;
             }
-            var city = GetLocationFromResponse(aiResponse);
-            if(city == null)
+
+            var city = default(string);
+            var forecastExecutionTime = GetExecutionTime(() => city = GetLocationFromResponse(aiResponse));
+            if (city == null)
             {
                 return null;
             }
@@ -43,7 +47,8 @@ namespace AiServices.Services.WeatherServices
                 {
                     City = city,
                     ForecastResult = null,
-                    AiResponse = aiResponse
+                    AiResponse = aiResponse,
+                    AiExecutionTime = aiExecutionTime
                 };
             }
 
@@ -51,10 +56,20 @@ namespace AiServices.Services.WeatherServices
             {
                 City = forecastResponse.location.name,
                 ForecastResult = forecastResponse,
-                AiResponse = aiResponse
+                AiResponse = aiResponse,
+                AiExecutionTime = aiExecutionTime,
+                ForecastExecutionTime = forecastExecutionTime
             };
         }
 
         protected abstract string GetLocationFromResponse(TQueryResponse queryResponse);
+
+        private TimeSpan GetExecutionTime(Action action)
+        {
+            var aiWatch = Stopwatch.StartNew();
+            action();
+            aiWatch.Stop();
+            return aiWatch.Elapsed;
+        }
     }
 }

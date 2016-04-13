@@ -9,7 +9,7 @@
             })
             .state("apiAi", {
                 url: "/apiai",
-                templateUrl: "Client/components/apiAi/apiAiView.html",
+                templateUrl: "Client/components/aiServiceView.html",
                 controller: "ApiAiController"
             })
               .state("apiaiIntentInfo", {
@@ -24,7 +24,7 @@
             })
             .state("luis", {
                 url: "/luis",
-                templateUrl: "Client/components/luis/luisView.html",
+                templateUrl: "Client/components/aiServiceView.html",
                 controller: "LuisAiController"
             })
             .state("luisIntentInfo", {
@@ -34,7 +34,7 @@
             })
             .state("watson", {
                 url: "/watson",
-                templateUrl: "Client/components/watson/watsonView.html",
+                templateUrl: "Client/components/aiServiceView.html",
                 controller: "WatsonAiController"
             })
             .state("about", {
