@@ -32,11 +32,11 @@ namespace AiServices.Services.AiServices
 
             if (responseData.Status.Code != 200)
             {
-                return null;
+                return responseData;
             }
             if(responseData.Result.Score < 0.90)
             {
-                return null;
+                return responseData;
             }
 
             return responseData;

@@ -36,16 +36,24 @@ namespace AiServices.Services.WeatherServices
 
             var forecastResponse = _forecastService.GetFromCity(city);
             var response = new QueryResponse();
-
-            if (forecastResponse.current == null)
+            if (forecastResponse == null)
             {
                 return new QueryResponse()
                 {
-                    City = city,
+                    City = "",
                     ForecastResult = null,
                     AiResponse = aiResponse
                 };
             }
+                if (forecastResponse.current == null)
+                {
+                    return new QueryResponse()
+                    {
+                        City = city,
+                        ForecastResult = forecastResponse,
+                        AiResponse = aiResponse
+                    };
+                }
 
             return new QueryResponse()
             {
