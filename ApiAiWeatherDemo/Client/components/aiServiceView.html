@@ -25,6 +25,8 @@
     </div>
     <div class="col-md-6">
         <h2>AI Response</h2>
+        <pre>AI execution time: {{aiExecutionTime | json}}</pre>
+        <pre>Forecast service execution time: {{forecastExecutionTime | json}}</pre>
         <pre>{{aiResponseData | json}}</pre>
         <pre>{{forecastResult | json}}</pre>
     </div>
