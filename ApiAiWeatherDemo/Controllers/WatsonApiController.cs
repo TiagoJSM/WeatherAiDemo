@@ -30,5 +30,11 @@ namespace ApiAiWeatherDemo.Controllers
         {
             return QueryWeather(model.Question);
         }
+
+        [Route("schema")]
+        public HttpResponseMessage GetSchema()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _aiService.getWatsonSchema());
+        }
     }
 }
