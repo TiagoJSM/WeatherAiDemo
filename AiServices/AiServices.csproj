@@ -58,6 +58,8 @@
     <Compile Include="Models\ApiAi\ApiAiUserSettings.cs" />
     <Compile Include="Models\Luis\LuisContext.cs" />
     <Compile Include="Models\Watson\WatsonData.cs" />
+    <Compile Include="Models\Watson\WatsonProfileResponse.cs" />
+    <Compile Include="Models\Watson\WatsonQueryResponse.cs" />
     <Compile Include="Models\Watson\WatsonUserSettings.cs" />
     <Compile Include="Services\AiServices\ApiAiService.cs" />
     <Compile Include="IWeatherService.cs" />
@@ -70,7 +72,7 @@
     <Compile Include="Models\Luis\LuisQueryResponse.cs" />
     <Compile Include="Models\QueryResponse.cs" />
     <Compile Include="Models\Watson\WatsonQueryRequest.cs" />
-    <Compile Include="Models\Watson\WatsonQueryResponse.cs" />
+    <Compile Include="Models\Watson\WatsonConversationResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AiServices\WatsonLoginService.cs" />
     <Compile Include="Services\AiServices\WatsonService.cs" />

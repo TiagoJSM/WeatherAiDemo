@@ -35,23 +35,27 @@ namespace AiServices.Services.WeatherServices
             var city = GetLocationFromResponse(aiResponse);
             if (city == null)
             {
-                return null;
+                return new QueryResponse()
+                {
+                    AiResponse = aiResponse,
+                    AiExecutionTime = aiExecutionTime
+                };
             }
 
             var forecastResponse = default(CityForecastModel);
             var forecastExecutionTime = GetExecutionTime(() => forecastResponse = _forecastService.GetFromCity(city));
 
-            if (forecastResponse == null)
+            if (forecastResponse == null || forecastResponse.current == null)
             {
                 return new QueryResponse()
                 {
                     City = "",
-                    ForecastResult = null,
+                    ForecastResult = forecastResponse,
                     AiResponse = aiResponse,
                     AiExecutionTime = aiExecutionTime
                 };
             }
-            if (forecastResponse.current == null)
+            /*if (forecastResponse.current == null)
             {
                 return new QueryResponse()
                 {
@@ -59,7 +63,7 @@ namespace AiServices.Services.WeatherServices
                     ForecastResult = forecastResponse,
                     AiResponse = aiResponse
                 };
-            }
+            }*/
 
             return new QueryResponse()
             {

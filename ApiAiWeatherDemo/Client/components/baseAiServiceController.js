@@ -63,18 +63,24 @@
                 msgs: msgs,
                 aiResponse: $scope.aiResponseData,
                 forecastResult: $scope.forecastResult,
-                aiExecutionTime: $scope.AiExecutionTime,
+                aiExecutionTime: $scope.aiExecutionTime,
                 forecastExecutionTime: $scope.forecastExecutionTime
             });
         }
     }
 
-    $scope.showAIResponse = function (ai, forecast) {
-        if (ai != "") {
-            $scope.aiResponseData = ai;   
+    $scope.showAIResponse = function (speech) {
+        if (speech.aiResponse != "") {
+            $scope.aiResponseData = speech.aiResponse;
         }
-        if (forecast != "") {
-            $scope.forecastResult = forecast;
+        if (speech.forecastResult != "") {
+            $scope.forecastResult = speech.forecastResult;
+        }
+        if (speech.aiExecutionTime != "") {
+            $scope.aiExecutionTime = speech.aiExecutionTime;
+        }
+        if (speech.forecastExecutionTime != "") {
+            $scope.forecastExecutionTime = speech.forecastExecutionTime;
         }
     }
 }];

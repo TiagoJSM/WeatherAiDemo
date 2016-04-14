@@ -27,6 +27,27 @@ namespace AiServices.Services.AiServices
 
         public WatsonQueryResponse Query(string question)
         {
+            var conversationResponse = Conversation(question);
+
+            if (conversationResponse.Confidence < 0.9)
+            {
+                return new WatsonQueryResponse()
+                {
+                    ConversationResponse = conversationResponse
+                };
+            }
+
+            var profileResponse = Profile();
+
+            return new WatsonQueryResponse()
+            {
+                ConversationResponse = conversationResponse,
+                ProfileResponse = profileResponse
+            };
+        }
+
+        public WatsonConversationResponse Conversation(string question)
+        {
             var client = new RestClient("https://gateway.watsonplatform.net")
             {
                 Authenticator = new HttpBasicAuthenticator(_data.Username, _data.Password)
@@ -38,10 +59,12 @@ namespace AiServices.Services.AiServices
             request.AddParameter("conversation_id", _userSettings.ConversationId);
             request.AddParameter("input", question);
 
-            var response = client.Execute<WatsonQueryResponse>(request);
-            WatsonQueryResponse res = response.Data;
-            
-            if (response.StatusCode != HttpStatusCode.Created)
+            var response = client.Execute<WatsonConversationResponse>(request);
+            var res = response.Data;
+
+            return res;
+
+            /*if (response.StatusCode != HttpStatusCode.Created)
             {
                 return res;
             }
@@ -51,7 +74,22 @@ namespace AiServices.Services.AiServices
                 return res;
             }
 
-            var city = res.Response.First();
+            return res;*/
+        }
+
+        public WatsonProfileResponse Profile()
+        {
+            var client = new RestClient("https://gateway.watsonplatform.net")
+            {
+                Authenticator = new HttpBasicAuthenticator(_data.Username, _data.Password)
+            };
+            var request = new RestRequest(@"dialog/api/v1/dialogs/{dialogueId}/profile", Method.GET);
+
+            request.AddUrlSegment("dialogueId", _data.DialogueId);
+            request.AddParameter("client_id", _userSettings.ClientId);
+
+            var response = client.Execute<WatsonProfileResponse>(request);
+            var res = response.Data;
 
             return res;
         }

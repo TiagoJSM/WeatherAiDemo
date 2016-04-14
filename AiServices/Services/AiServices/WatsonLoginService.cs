@@ -26,7 +26,7 @@ namespace AiServices.Services.AiServices
             };
             var request = new RestRequest(@"dialog/api/v1/dialogs/{dialogueId}/conversation", Method.POST);
             request.AddUrlSegment("dialogueId", _data.DialogueId);
-            var response = client.Execute<WatsonQueryResponse>(request);
+            var response = client.Execute<WatsonConversationResponse>(request);
 
             if (response.StatusCode != HttpStatusCode.Created)
             {

@@ -18,6 +18,6 @@ namespace ApiAiWeatherDemo.Models
         public CityForecastModel ForecastResult { get; set; }
         public LuisQueryResponse LuisResponse { get; set; }
         public QueryApiResponse ApiAIResponse { get; set; }
-        public WatsonQueryResponse WatsonResponse { get; set; }
+        public WatsonConversationResponse WatsonResponse { get; set; }
     }
 }

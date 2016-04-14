@@ -18,7 +18,7 @@ namespace AiServices.Services.WeatherServices
 
         protected override string GetLocationFromResponse(WatsonQueryResponse queryResponse)
         {
-            return queryResponse.Response.First();
+            return queryResponse.ProfileResponse?.name_values.FirstOrDefault(nv => nv.name == "CityName")?.value;
         }
     }
 }

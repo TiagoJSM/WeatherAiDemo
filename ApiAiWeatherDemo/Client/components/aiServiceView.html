@@ -14,7 +14,7 @@
         </div>
         <div class="chat-box">
             <ol class="chat">
-                <li ng-repeat="speech in chat" class="{{speech.self ? 'self' : 'other'}}" ng-click="showAIResponse(speech.aiResponse, speech.forecastResult)">
+                <li ng-repeat="speech in chat" class="{{speech.self ? 'self' : 'other'}}" ng-click="showAIResponse(speech)">
                     <div class="msg">
                         <div class="user">{{speech.self ? 'You' : apiName}}</div>
                         <p ng-repeat="msg in speech.msgs">{{msg}}</p>
@@ -25,8 +25,8 @@
     </div>
     <div class="col-md-6">
         <h2>AI Response</h2>
-        <pre>AI execution time: {{aiExecutionTime | json}}</pre>
-        <pre>Forecast service execution time: {{forecastExecutionTime | json}}</pre>
+        <pre>AI execution time: {{aiExecutionTime}}</pre>
+        <pre>Forecast service execution time: {{forecastExecutionTime}}</pre>
         <pre>{{aiResponseData | json}}</pre>
         <pre>{{forecastResult | json}}</pre>
     </div>

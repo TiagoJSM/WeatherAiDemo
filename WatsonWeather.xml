@@ -18,6 +18,7 @@
                         <output>
                             <prompt selectionType="RANDOM">
                                 <item>I'm sorry I did not understand your question, please try again.</item>
+								<!-- <item></item> -->
                             </prompt>
                         </output>
                     </default>
@@ -25,37 +26,116 @@
             </output>
         </folder>
         <folder label="Library">
-            <folder label="Live Content" id="getWeather">
+            
+			
+			<folder label="Live Content" id="getWeather">
                 <input>
                     <grammar>
-                        <item>What is the weather like in (RANDOM)={CitName}?</item>
-                        <item>What's the weather in (RANDOM)={CitName}?</item>
-                        <item>What's the weather like in (RANDOM)={CitName}?</item>
-                        <item>What's it like in (RANDOM)={CitName}?</item>
-                        <item>What is it like in (RANDOM)={CitName}?</item>
-                        <item>What is the weather in (RANDOM)={CitName}?</item>
+                        <item>What is the weather like in (RANDOM)={CityName}?</item>
+                        <item>What's the weather in (RANDOM)={CityName}?</item>
+                        <item>What's the weather like in (RANDOM)={CityName}?</item>
+                        <item>What's it like in (RANDOM)={CityName}?</item>
+                        <item>What is it like in (RANDOM)={CityName}?</item>
+                        <item>What is the weather in (RANDOM)={CityName}?</item>
+						<item>What * weather in (RANDOM)={CityName}?</item>
                     </grammar>
-					<action varName="CitName" operator="SET_TO">{CitName.source}</action>
+					<action varName="CityName" operator="SET_TO">{CityName.source}</action>
+					<action varName="Condition" operator="SET_TO">weather</action>
                     <output>
                         <prompt selectionType="RANDOM">
-                            <item>{CitName}</item>
+                            <item>{CityName}</item>
                         </prompt>
                     </output>
                 </input>
+				
+				
+				<input>
+                    <grammar>
+                        <item>Is it going to rain in (RANDOM)={CityName}?</item>
+                        <item>Will it rain in (RANDOM)={CityName}?</item>
+                        <item>Is * rain in (RANDOM)={CityName}?</item>
+						<item>Will * rain in (RANDOM)={CityName}?</item>
+                    </grammar>
+					<action varName="CityName" operator="SET_TO">{CityName.source}</action>
+					<action varName="Condition" operator="SET_TO">rain</action>
+                    <output>
+                        <prompt selectionType="RANDOM">
+                            <item>{CityName}</item>
+                        </prompt>
+                    </output>
+                </input>
+				
+				<input>
+                    <grammar>
+                        <item>Is it going to be sunny in (RANDOM)={CityName}?</item>
+                        <item>Will it be sunny in (RANDOM)={CityName}?</item>
+                        <item>Is * sunny in (RANDOM)={CityName}?</item>
+						<item>Will * sunny in (RANDOM)={CityName}?</item>
+                    </grammar>
+					<action varName="CityName" operator="SET_TO">{CityName.source}</action>
+					<action varName="Condition" operator="SET_TO">sunny</action>
+                    <output>
+                        <prompt selectionType="RANDOM">
+                            <item>{CityName}</item>
+                        </prompt>
+                    </output>
+                </input> 
+				
 				<input>
                     <grammar>
                         <item>What's the weather there?</item>
                     </grammar>
+					<action varName="Condition" operator="SET_TO">weather</action>
 					<goto ref="getWeatherContext"/>
                 </input>
+				
+				<input>
+                    <grammar>
+                        <item>Is it going to rain there?</item>
+                    </grammar>
+					<action varName="Condition" operator="SET_TO">rain</action>
+					<goto ref="getRainContext"/>
+                </input>
+				
+				<input>
+                    <grammar>
+                        <item>Is it going to be sunny there?</item>
+                    </grammar>
+					<action varName="Condition" operator="SET_TO">sunny</action>
+					<goto ref="getSunnyContext"/>
+                </input>
+				
             </folder>
+			
 			
 			<folder label="Get weather based on context">
 				<if id="getWeatherContext">
-				   <cond varName="CitName" operator="HAS_VALUE" />
+				   <cond varName="CityName" operator="HAS_VALUE" />
 				   <output>
                         <prompt selectionType="RANDOM">
-                            <item>{CitName}</item>
+                            <item>{CityName}</item>
+                        </prompt>
+                    </output>
+				</if>
+            </folder>
+			
+			<folder label="Get rain condition based on context">
+				<if id="getRainContext">
+				   <cond varName="CityName" operator="HAS_VALUE" />
+				   <output>
+                        <prompt selectionType="RANDOM">
+                            <item>{CityName}</item>
+                        </prompt>
+                    </output>
+				</if>
+            </folder>
+			
+			<folder label="Get sunny condition based on context">
+				<if id="getSunnyContext">
+				   <cond varName="CityName" operator="HAS_VALUE" />
+				   <output>
+                        <prompt selectionType="RANDOM">
+                            <item>{CityName}</item>
                         </prompt>
                     </output>
 				</if>
@@ -81,7 +161,8 @@
     </constants>
     <variables>
         <var_folder name="Home">
-			<var name="CitName" type="TEXT"/>
+			<var name="CityName" type="TEXT"/>
+			<var name="Condition" type="TEXT"/>
         </var_folder>
     </variables>
     <settings>
@@ -142,6 +223,7 @@
         <setting name="MULTISENT">0</setting>
         <setting name="DNR_NODE_ID">-15</setting>
         <setting name="CLEARCACHE"></setting>
+		<setting name="USE_SPELLING_CORRECTIONS">2</setting>
     </settings>
     <specialSettings>
         <specialSetting label="DNR Join Statement">

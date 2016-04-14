@@ -20,11 +20,11 @@ namespace ApiAiWeatherDemo.Controllers
         protected HttpResponseMessage QueryWeather(string question)
         {
             var weatherResponse = _weatherService.Query(question);
-            if (weatherResponse == null)
+            if (weatherResponse?.City == null)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            if (weatherResponse.ForecastResult.error != null)
+            if (weatherResponse.ForecastResult?.error != null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, weatherResponse);
             }
