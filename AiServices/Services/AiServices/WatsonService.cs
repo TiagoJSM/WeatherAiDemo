@@ -58,10 +58,17 @@ namespace AiServices.Services.AiServices
 
         public String getWatsonSchema()
         {
-            string schemaPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),"@SolutionItems/WatsonWeather.xml");
-            var schema = XDocument.Load(schemaPath);
+            string result = string.Empty;
 
-            return schema.ToString();
+            using (Stream stream = this.GetType().Assembly.
+                       GetManifestResourceStream("AiServices.Models.Watson." + "WatsonWeather.xml"))
+            {
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    result = sr.ReadToEnd();
+                }
+            }
+            return result;
         }
     }
 }

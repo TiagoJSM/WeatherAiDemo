@@ -37,6 +37,11 @@
                 templateUrl: "Client/components/aiServiceView.html",
                 controller: "WatsonAiController"
             })
+            .state("watsonSchema", {
+                url: "/watson/schema",
+                templateUrl: "Client/components/watson/watsonSchemaView.html",
+                controller: "WatsonSchemaController"
+            })
             .state("about", {
                 url: "/about",
                 templateUrl: "Client/components/about.html",
