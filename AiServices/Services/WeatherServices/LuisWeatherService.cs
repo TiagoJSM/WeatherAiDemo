@@ -51,8 +51,20 @@ namespace AiServices.Services.WeatherServices
             }
             else if (queryResponse.entities.Length > 0)
             {
-                location = queryResponse.entities[0].entity;
-                _contextSession.SaveContext(new LuisContext() { Location = location });
+                foreach(Entity entity in queryResponse.entities)
+                {
+                    if(entity.type == "location")
+                    {
+                        location = entity.entity;
+                        _contextSession.SaveContext(new LuisContext() { Location = location });
+                    }
+                    else if(entity.type == "geography")
+                    {
+                        location = entity.entity;
+                        _contextSession.SaveContext(new LuisContext() { Location = location });
+                    }
+                }
+                
             }
 
             return location;
