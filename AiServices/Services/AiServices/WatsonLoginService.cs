@@ -12,13 +12,20 @@ namespace AiServices.Services.AiServices
 {
     public class WatsonLoginService : IWatsonLoginService
     {
+        private WatsonData _data;
+        public WatsonLoginService(WatsonData data)
+        {
+            _data = data;
+        }
+
         public WatsonUserSettings GetUserSettings()
         {
             var client = new RestClient("https://gateway.watsonplatform.net")
             {
-                Authenticator = new HttpBasicAuthenticator("200717c0-b5d8-4d36-8409-ff6eeef50a9a", "hoevZzE8cedp")
+                Authenticator = new HttpBasicAuthenticator(_data.Username, _data.Password)
             };
-            var request = new RestRequest(@"dialog/api/v1/dialogs/1ae4bebe-3c6c-4968-9a48-80ce5c8566c8/conversation", Method.POST);
+            var request = new RestRequest(@"dialog/api/v1/dialogs/{dialogueId}/conversation", Method.POST);
+            request.AddUrlSegment("dialogueId", _data.DialogueId);
             var response = client.Execute<WatsonQueryResponse>(request);
 
             if (response.StatusCode != HttpStatusCode.Created)

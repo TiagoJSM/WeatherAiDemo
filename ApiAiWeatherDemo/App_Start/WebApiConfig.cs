@@ -65,6 +65,16 @@ namespace ApiAiWeatherDemo
                     {
                         var settings = c.Resolve<UserSettings>();
                         return new WatsonUserSettings(settings.WatsonClientId, settings.WatsonConversationId);
+                    }))
+                .RegisterType<WatsonData>(
+                    new InjectionFactory(c =>
+                    {
+                        return new WatsonData()
+                        {
+                            Username = "200717c0-b5d8-4d36-8409-ff6eeef50a9a",
+                            Password = "hoevZzE8cedp",
+                            DialogueId = "e773d348-ed79-4558-b6d7-dfe119ecdfca"
+                        };
                     }));
 
             config.DependencyResolver = new UnityResolver(container);

@@ -57,6 +57,7 @@
     <Compile Include="Models\ApiAi\ApiAiStatusObject.cs" />
     <Compile Include="Models\ApiAi\ApiAiUserSettings.cs" />
     <Compile Include="Models\Luis\LuisContext.cs" />
+    <Compile Include="Models\Watson\WatsonData.cs" />
     <Compile Include="Models\Watson\WatsonUserSettings.cs" />
     <Compile Include="Services\AiServices\ApiAiService.cs" />
     <Compile Include="IWeatherService.cs" />
