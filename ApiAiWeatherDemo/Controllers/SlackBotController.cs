@@ -24,22 +24,18 @@ namespace ApiAiWeatherDemo.Controllers
 
         [Route("ask")]
         [HttpPost]
-        public HttpResponse Post(SlackOutgoingData query)
+        public IHttpActionResult Post(SlackOutgoingData query)
         {
             var aiResponse = _aiService.Query(query.text);
 
-            SlackMessage slackmessage = null;
+            SlackMessage slackmessage = new SlackMessage();
             slackmessage.text = aiResponse.Result.Action + "Called by: " + query.user_name;
 
             //slackService.postMessage(slackmessage);
 
             HttpResponse response = HttpContext.Current.Response;
 
-            response.StatusCode = 200;
-            response.ContentType = "application/json";
-            response.Write(slackmessage);
-
-            return response;
+            return Ok(slackmessage);
         }
     }
 }

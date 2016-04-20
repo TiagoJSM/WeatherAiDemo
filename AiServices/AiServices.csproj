@@ -57,10 +57,12 @@
     <Compile Include="Models\ApiAi\ApiAiStatusObject.cs" />
     <Compile Include="Models\ApiAi\ApiAiUserSettings.cs" />
     <Compile Include="Models\Luis\LuisContext.cs" />
+    <Compile Include="Models\Slack\SlackOutgoingData.cs" />
     <Compile Include="Models\Watson\WatsonData.cs" />
     <Compile Include="Models\Watson\WatsonProfileResponse.cs" />
     <Compile Include="Models\Watson\WatsonQueryResponse.cs" />
     <Compile Include="Models\Watson\WatsonUserSettings.cs" />
+    <Compile Include="Services\AiServices\BarberApiAiService.cs" />
     <Compile Include="Services\AiServices\ApiAiService.cs" />
     <Compile Include="IWeatherService.cs" />
     <Compile Include="Services\AiServices\LuisService.cs" />
@@ -78,6 +80,8 @@
     <Compile Include="Services\AiServices\WatsonService.cs" />
     <Compile Include="Services\Forecast\ForecastService.cs" />
     <Compile Include="Services\Forecast\Models\CityForecastModel.cs" />
+    <Compile Include="Services\Slack\SlackMessage.cs" />
+    <Compile Include="Services\Slack\SlackService.cs" />
     <Compile Include="Services\WeatherServices\ApiAiWeatherService.cs" />
     <Compile Include="Services\WeatherServices\BaseWeatherService.cs" />
     <Compile Include="Services\WeatherServices\LuisWeatherService.cs" />
