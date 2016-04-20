@@ -27,15 +27,15 @@ namespace ApiAiWeatherDemo.Controllers
         public IHttpActionResult Post(SlackOutgoingData query)
         {
             var aiResponse = _aiService.Query(query.text);
-
             SlackMessage slackmessage = new SlackMessage();
-            slackmessage.text = aiResponse.Result.Action + "Called by: " + query.user_name;
 
-            //slackService.postMessage(slackmessage);
+            if (query.user_name != "slackbot")
+            {
+                slackmessage.text = aiResponse.Result.Action + "Called by: " + query.user_name;
+                return Ok(slackmessage);
+            }
 
-            HttpResponse response = HttpContext.Current.Response;
-
-            return Ok(slackmessage);
+            return Ok();
         }
     }
 }
