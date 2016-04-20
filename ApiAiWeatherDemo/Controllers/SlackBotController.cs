@@ -31,7 +31,13 @@ namespace ApiAiWeatherDemo.Controllers
 
             if (query.user_name != "slackbot")
             {
-                slackmessage.text = aiResponse.Result.Action + "Called by: " + query.user_name;
+                if (aiResponse.Result.Fulfillment.Speech != null)
+                {
+                    slackmessage.text = aiResponse.Result.Fulfillment.Speech;
+                }
+                else {
+                    slackmessage.text = aiResponse.Result.Action + "Called by: " + query.user_name;
+                }
                 return Ok(slackmessage);
             }
 

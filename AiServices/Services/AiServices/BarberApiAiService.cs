@@ -24,7 +24,7 @@ namespace AiServices.Services.AiServices
             request.AddUrlSegment("query", query);
             request.AddUrlSegment("sessionId", _settings.SessionId);
 
-            request.AddHeader("Authorization", "Bearer 7958ac1950c647b592e2213762ef7c5c ");
+            request.AddHeader("Authorization", "Bearer 20f8ed94bf1e43e0887266818d1314a1");
             request.AddHeader("ocp-apim-subscription-key", "a3703095-c5b3-4d8d-9e2f-bc1b2b92fc2a5");
 
             var response = client.Execute<QueryApiResponse>(request);
