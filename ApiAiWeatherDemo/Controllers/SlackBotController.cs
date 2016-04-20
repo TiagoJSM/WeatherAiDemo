@@ -14,10 +14,10 @@ namespace ApiAiWeatherDemo.Controllers
     [RoutePrefix("bot/slack")]
     public class SlackBotController : ApiController
     {
-        private ApiAiService _aiService;
+        private BarberApiAiService _aiService;
         private SlackService slackService = new SlackService();
 
-        public SlackBotController(ApiAiService aiService): base()
+        public SlackBotController(BarberApiAiService aiService): base()
         {
             _aiService = aiService;
         }
