@@ -14,14 +14,19 @@ namespace ApiAiWeatherDemo.Controllers
     [RoutePrefix("bot/slack")]
     public class SlackBotController : ApiController
     {
-        private ApiAiService apiAiService;
-        private SlackService slackService;
+        private ApiAiService _aiService;
+        private SlackService slackService = new SlackService();
+
+        public SlackBotController(ApiAiService aiService): base()
+        {
+            _aiService = aiService;
+        }
 
         [Route("ask")]
         [HttpPost]
         public HttpResponseMessage Post(SlackOutgoingData query)
         {
-            var aiResponse = apiAiService.Query(query.text);
+            var aiResponse = _aiService.Query(query.text);
 
             SlackMessage slackmessage = null;
             slackmessage.text = aiResponse.Result.Action + "Called by: " + query.user_name;
