@@ -24,7 +24,7 @@ namespace ApiAiWeatherDemo.Controllers
 
         [Route("ask")]
         [HttpPost]
-        public HttpResponseMessage Post(SlackOutgoingData query)
+        public HttpResponse Post(SlackOutgoingData query)
         {
             var aiResponse = _aiService.Query(query.text);
 
@@ -33,7 +33,13 @@ namespace ApiAiWeatherDemo.Controllers
 
             //slackService.postMessage(slackmessage);
 
-            return Request.CreateResponse(HttpStatusCode.OK, slackmessage);
+            HttpResponse response = HttpContext.Current.Response;
+
+            response.StatusCode = 200;
+            response.ContentType = "application/json";
+            response.Write(slackmessage);
+
+            return response;
         }
     }
 }
