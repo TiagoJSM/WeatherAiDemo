@@ -199,6 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LuisApiController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SlackBotController.cs" />
     <Compile Include="Controllers\WatsonApiController.cs" />
     <Compile Include="Controllers\WeatherApiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -227,7 +228,7 @@
     <Content Include="Client\components\luis\luisAiController.js" />
     <Content Include="Client\components\luis\luisIntentController.js" />
     <Content Include="Client\components\watson\watsonAiController.js" />
-	<Content Include="Client\components\watson\watsonSchemaController.js" />
+    <Content Include="Client\components\watson\watsonSchemaController.js" />
     <Content Include="Client\components\watson\watsonSchemaView.html" />
     <Content Include="Client\menubar.html" />
     <Content Include="Content\bootstrap.css" />
@@ -298,6 +299,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Client\build\" />
     <Folder Include="Client\directives\" />
+    <Folder Include="Views\SlackBot\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
