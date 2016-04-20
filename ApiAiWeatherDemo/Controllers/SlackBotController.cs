@@ -26,7 +26,7 @@ namespace ApiAiWeatherDemo.Controllers
         [HttpPost]
         public IHttpActionResult Post(SlackOutgoingData query)
         {
-            var aiResponse = _aiService.Query(query.text);
+            var aiResponse = _aiService.Query(query);
             SlackMessage slackmessage = new SlackMessage();
 
             if (query.user_name != "slackbot")
